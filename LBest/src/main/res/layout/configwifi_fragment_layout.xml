@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2/4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/wificonfig_margain_top"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/wificonfig_order_ts"/>
+
+    <ImageView
+        android:id="@+id/edit_img"
+        android:layout_below="@+id/tv_order"
+        android:layout_width="@dimen/wificonfig_image_width"
+        android:layout_height="@dimen/wificonfig_image_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/wifi_large"/>
+
+    <LinearLayout
+        android:id="@+id/wifides"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_img"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_devices_chosse_wifi_network"
+            android:textColor="#333333"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@string/str_devices_not_support_5G_wifi"
+            android:textColor="@color/gray"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wifides"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/wificonfig_margain_top"
+        android:paddingLeft="@dimen/wificonfig_pading_left"
+        android:paddingRight="@dimen/wificonfig_pading_right">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wificonfig_edittext_height"
+            android:background="#fff"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edit_ssid_str"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#fff"
+                android:clickable="false"
+                android:ellipsize="end"
+                android:enabled="false"
+                android:focusable="false"
+                android:hint="@string/local_network_exception"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#333333"
+                android:textIsSelectable="false"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/edit_ssid_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:background="#fff"
+                android:text="@string/str_devices_configure_wifi_change"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_gray_bg"/>
+
+        <LinearLayout
+            android:id="@+id/edit_pwd_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wificonfig_edittext_height"
+            android:layout_marginTop="15dp"
+            android:background="#fff"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/edit_pwd_str"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#fff"
+                android:ellipsize="end"
+                android:inputType="textPassword"
+                android:hint="@string/str_inputpassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#333333"
+                android:textIsSelectable="false"
+                android:textSize="15sp"/>
+
+            <ImageView
+                android:id="@+id/edit_pwd_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:background="#fff"
+                android:scaleType="fitCenter"
+                android:src="@drawable/password_visiable"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/edit_unpwd_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/local_network_unnedd_pwd"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            android:visibility="gone"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_gray_bg"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

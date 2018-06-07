@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/bt_takephoto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/choosepic_window_btheight"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:background="@drawable/wanke_circup"
+        android:text="@string/str_choosepic_takephoto"
+        android:textColor="@color/tabgray_selected"
+        android:textSize="@dimen/choosepic_window_ts" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:alpha="0.5"
+        android:background="@color/line_gray_bg" />
+    <TextView
+        android:id="@+id/bt_froomgallary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/choosepic_window_btheight"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:background="@drawable/wanke_circdown"
+        android:text="@string/str_choosepic_phonegallay"
+        android:textColor="@color/tabgray_selected"
+        android:textSize="@dimen/choosepic_window_ts" />
+
+
+    <TextView
+        android:id="@+id/family_bt_cancle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/choosepic_window_btheight"
+        android:gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:background="@drawable/wanke_circall"
+        android:text="@string/str_choosepic_cancle"
+        android:textColor="@color/tabgray_selected"
+        android:textSize="@dimen/choosepic_window_ts" />
+</LinearLayout>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lbest.rm.SceneEditActivity">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <LinearLayout
+        android:layout_below="@+id/toolbar_contain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
+        <RelativeLayout
+            android:id="@+id/rl_scenemodel"
+            android:layout_width="match_parent"
+            android:background="@drawable/transparent_selector"
+            android:layout_height="@dimen/setting_item_height"
+            android:paddingLeft="@dimen/setting_padding_left"
+            android:paddingRight="@dimen/setting_padding_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/str_scenemodel"
+                android:textColor="@color/tabgray_selected"
+                android:textSize="@dimen/setting_ts" />
+
+            <TextView
+                android:id="@+id/tv_modelname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_arrow1"
+                android:textSize="@dimen/setting_ts"
+                android:textColor="@color/tabgray"
+                android:layout_marginRight="5dp"/>
+
+            <ImageView
+                android:id="@+id/iv_arrow1"
+                android:layout_width="@dimen/setting_arrow_width"
+                android:layout_height="@dimen/setting_arrow_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/arrow_gray_right" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_openset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_firstaction"
+            android:textColor="@color/tabgray"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="@dimen/setting_padding_left"
+            android:paddingRight="@dimen/setting_padding_right"
+            android:textSize="@dimen/scene_edit_type_ts"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_firstaction"
+            android:layout_width="match_parent"
+            android:background="@drawable/transparent_selector"
+            android:layout_height="@dimen/setting_item_height"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="@dimen/setting_padding_left"
+            android:paddingRight="@dimen/setting_padding_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/str_sceneaction"
+                android:textColor="@color/tabgray_selected"
+                android:textSize="@dimen/setting_ts" />
+
+            <TextView
+                android:id="@+id/tv_firstaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_arrow2"
+                android:textSize="@dimen/setting_ts"
+                android:textColor="@color/tabgray"
+                android:layout_marginRight="5dp"/>
+
+            <ImageView
+                android:id="@+id/iv_arrow2"
+                android:layout_width="@dimen/setting_arrow_width"
+                android:layout_height="@dimen/setting_arrow_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/arrow_gray_right" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_firstactiontime"
+            android:layout_width="match_parent"
+            android:background="@drawable/transparent_selector"
+            android:layout_height="@dimen/setting_item_height"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="@dimen/setting_padding_left"
+            android:paddingRight="@dimen/setting_padding_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/str_sceneactiontime"
+                android:textColor="@color/tabgray_selected"
+                android:textSize="@dimen/setting_ts" />
+
+            <TextView
+                android:id="@+id/tv_firstactiontime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_arrow3"
+                android:textSize="@dimen/setting_ts"
+                android:textColor="@color/tabgray"
+                android:layout_marginRight="5dp"/>
+
+            <ImageView
+                android:id="@+id/iv_arrow3"
+                android:layout_width="@dimen/setting_arrow_width"
+                android:layout_height="@dimen/setting_arrow_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/arrow_gray_right" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_closeset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_secondtaction"
+            android:textColor="@color/tabgray"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="@dimen/setting_padding_left"
+            android:paddingRight="@dimen/setting_padding_right"
+            android:textSize="@dimen/scene_edit_type_ts"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_secondaction"
+            android:layout_width="match_parent"
+            android:background="@drawable/transparent_selector"
+            android:layout_height="@dimen/setting_item_height"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="@dimen/setting_padding_left"
+            android:paddingRight="@dimen/setting_padding_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/str_sceneaction"
+                android:textColor="@color/tabgray_selected"
+                android:textSize="@dimen/setting_ts" />
+
+            <TextView
+                android:id="@+id/tv_secondaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_arrow4"
+                android:textSize="@dimen/setting_ts"
+                android:textColor="@color/tabgray"
+                android:layout_marginRight="5dp"/>
+
+            <ImageView
+                android:id="@+id/iv_arrow4"
+                android:layout_width="@dimen/setting_arrow_width"
+                android:layout_height="@dimen/setting_arrow_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/arrow_gray_right" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_secondactiontime"
+            android:layout_width="match_parent"
+            android:background="@drawable/transparent_selector"
+            android:layout_height="@dimen/setting_item_height"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="@dimen/setting_padding_left"
+            android:paddingRight="@dimen/setting_padding_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/str_sceneactiontime"
+                android:textColor="@color/tabgray_selected"
+                android:textSize="@dimen/setting_ts" />
+
+            <TextView
+                android:id="@+id/tv_secondactiontime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_arrow5"
+                android:textSize="@dimen/setting_ts"
+                android:textColor="@color/tabgray"
+                android:layout_marginRight="5dp"/>
+
+            <ImageView
+                android:id="@+id/iv_arrow5"
+                android:layout_width="@dimen/setting_arrow_width"
+                android:layout_height="@dimen/setting_arrow_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/arrow_gray_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_scenerepeat"
+            android:layout_width="match_parent"
+            android:background="@drawable/transparent_selector"
+            android:layout_height="@dimen/setting_item_height"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="@dimen/setting_padding_left"
+            android:paddingRight="@dimen/setting_padding_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/str_scenerepeat"
+                android:textColor="@color/tabgray_selected"
+                android:textSize="@dimen/setting_ts" />
+
+            <TextView
+                android:id="@+id/tv_scenerepeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_arrow6"
+                android:textSize="@dimen/setting_ts"
+                android:textColor="@color/tabgray"
+                android:layout_marginRight="5dp"/>
+
+            <ImageView
+                android:id="@+id/iv_arrow6"
+                android:layout_width="@dimen/setting_arrow_width"
+                android:layout_height="@dimen/setting_arrow_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/arrow_gray_right" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_save"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_scenesave"
+        android:textSize="@dimen/scene_edit_ts"
+        android:background="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/white"/>
+</RelativeLayout>
+

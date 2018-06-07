@@ -1,0 +1,33 @@
+{
+    "product_list": [
+        {
+            "pid": "000000000000000000000000dd4f0000",
+            "param_list": [
+                {
+                    "param": "rack_airdryremtime",
+                    "name": "风干倒计时",
+                    "show_condition_val": "0",
+                    "show_grade": 2,
+                    "judge_way": ">",
+                    "util": "min"
+                },
+                {
+                    "param": "rack_dryremtime",
+                    "name": "烘干倒计时",
+                    "show_grade": 3,
+                    "show_condition_val": "0",
+                    "judge_way": ">",
+                    "util": "min"
+                },
+                {
+                    "param": "rack_disinremtime",
+                    "name": "杀菌倒计时",
+                    "show_grade": 1,
+                    "show_condition_val": "0",
+                    "judge_way": ">",
+                    "util": "min"
+                }
+            ]
+        }
+    ]
+}

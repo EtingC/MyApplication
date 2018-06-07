@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fl_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/scene_actioncontinue_top_height"
+        android:background="@drawable/wanke_circup"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
+
+        <ImageView
+            android:id="@+id/bt_exit"
+            android:layout_width="@dimen/scene_actioncontinue_exit_size"
+            android:layout_height="@dimen/scene_actioncontinue_exit_size"
+            android:background="@drawable/wanke_circup"
+            android:scaleType="fitCenter"
+            android:src="@drawable/close_window" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.lbest.rm.view.NumberPickerView
+            android:id="@+id/np_hour"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scene_actioncontinue_numberpick_height"
+            android:layout_below="@+id/fl_top"
+            android:background="@android:color/white"
+            app:npv_DividerColor="@color/line_gray_bg"
+            app:npv_HintText="@string/str_hour"
+            app:npv_TextColorHint="@color/tabgray_selected"
+            app:npv_ShowCount="3"
+            app:npv_TextColorNormal="@color/tabgray"
+            app:npv_TextColorSelected="@color/tabgray_selected"
+            app:npv_TextSizeNormal="@dimen/scene_actioncontinue_ts"
+            app:npv_TextSizeSelected="@dimen/scene_actioncontinue_select_ts" />
+        <com.lbest.rm.view.NumberPickerView
+            android:id="@+id/np_minute"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scene_actioncontinue_numberpick_height"
+            android:layout_below="@+id/fl_top"
+            android:background="@android:color/white"
+            app:npv_DividerColor="@color/line_gray_bg"
+            app:npv_TextColorHint="@color/tabgray_selected"
+            app:npv_HintText="@string/str_minute"
+            app:npv_ShowCount="3"
+            app:npv_TextColorNormal="@color/tabgray"
+            app:npv_TextColorSelected="@color/tabgray_selected"
+            app:npv_TextSizeNormal="@dimen/scene_actioncontinue_ts"
+            app:npv_TextSizeSelected="@dimen/scene_actioncontinue_select_ts" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/scene_actioncontinue_bottom_height"
+        android:layout_below="@+id/numberpicker"
+        android:background="@drawable/wanke_circdown" />
+
+    <Button
+        android:id="@+id/bt_sure"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/choosepic_window_btheight"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/wanke_circall"
+        android:text="@string/str_sure"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/choosepic_window_ts" />
+</LinearLayout>

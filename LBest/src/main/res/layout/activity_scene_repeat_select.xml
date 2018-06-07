@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lbest.rm.SceneRepeatSelectActivity">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <RelativeLayout
+        android:layout_marginTop="16dp"
+        android:id="@+id/rl_week1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_week1"
+            android:textColor="@color/tabgray_selected"
+            android:textSize="@dimen/scene_action_ts" />
+
+        <ImageView
+            android:id="@+id/iv_select1"
+            android:layout_width="@dimen/scene_action_iv_size"
+            android:layout_height="@dimen/scene_action_iv_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_noselected" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/iv_select"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_gray_bg"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_week2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_week2"
+            android:textColor="@color/tabgray_selected"
+            android:textSize="@dimen/scene_action_ts" />
+
+        <ImageView
+            android:id="@+id/iv_select2"
+            android:layout_width="@dimen/scene_action_iv_size"
+            android:layout_height="@dimen/scene_action_iv_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_noselected" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/iv_select"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_gray_bg"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_week3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_week3"
+            android:textColor="@color/tabgray_selected"
+            android:textSize="@dimen/scene_action_ts" />
+
+        <ImageView
+            android:id="@+id/iv_select3"
+            android:layout_width="@dimen/scene_action_iv_size"
+            android:layout_height="@dimen/scene_action_iv_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_noselected" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/iv_select"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_gray_bg"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_week4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_week4"
+            android:textColor="@color/tabgray_selected"
+            android:textSize="@dimen/scene_action_ts" />
+
+        <ImageView
+            android:id="@+id/iv_select4"
+            android:layout_width="@dimen/scene_action_iv_size"
+            android:layout_height="@dimen/scene_action_iv_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_noselected" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/iv_select"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_gray_bg"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_week5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_week5"
+            android:textColor="@color/tabgray_selected"
+            android:textSize="@dimen/scene_action_ts" />
+
+        <ImageView
+            android:id="@+id/iv_select5"
+            android:layout_width="@dimen/scene_action_iv_size"
+            android:layout_height="@dimen/scene_action_iv_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_noselected" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/iv_select"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_gray_bg"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_week6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_week6"
+            android:textColor="@color/tabgray_selected"
+            android:textSize="@dimen/scene_action_ts" />
+
+        <ImageView
+            android:id="@+id/iv_select6"
+            android:layout_width="@dimen/scene_action_iv_size"
+            android:layout_height="@dimen/scene_action_iv_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_noselected" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/iv_select"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_gray_bg"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_week7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_week7"
+            android:textColor="@color/tabgray_selected"
+            android:textSize="@dimen/scene_action_ts" />
+
+        <ImageView
+            android:id="@+id/iv_select7"
+            android:layout_width="@dimen/scene_action_iv_size"
+            android:layout_height="@dimen/scene_action_iv_size"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_noselected" />
+    </RelativeLayout>
+</LinearLayout>

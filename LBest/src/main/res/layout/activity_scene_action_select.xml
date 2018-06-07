@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lbest.rm.SceneActionSelectActivity">
+
+    <include layout="@layout/toolbar_layout" />
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_below="@+id/toolbar_contain"
+       android:layout_marginTop="16dp"
+       android:scrollbars="none">
+       <LinearLayout
+           android:id="@+id/ll_container"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:background="@drawable/transparent_selector"
+           android:paddingLeft="@dimen/setting_padding_left"
+           android:paddingRight="@dimen/setting_padding_right"/>
+   </ScrollView>
+</RelativeLayout>
+

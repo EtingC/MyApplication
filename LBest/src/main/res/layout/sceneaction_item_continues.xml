@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:background="@drawable/transparent_selector">
+
+    <TextView
+        android:id="@+id/tv_paramname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="@string/str_nickname"
+        android:textColor="@color/tabgray_selected"
+        android:textSize="@dimen/setting_ts" />
+
+    <TextView
+        android:id="@+id/tv_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/iv_arrow1"
+        android:textColor="@color/tabgray"
+        android:textSize="@dimen/setting_ts" />
+
+    <ImageView
+        android:id="@+id/iv_arrow1"
+        android:layout_width="@dimen/setting_arrow_width"
+        android:layout_height="@dimen/setting_arrow_height"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/arrow_gray_right" />
+
+    <View
+        android:layout_below="@+id/iv_arrow1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="16dp"
+        android:background="@color/line_gray_bg" />
+</RelativeLayout>

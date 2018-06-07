@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lbest.rm.MainActivity">
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="修改昵称"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/bt_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="修改头像"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/bt_productlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="产品列表" />
+
+
+    <Button
+        android:id="@+id/bt_deviceconfig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设备配网"
+        android:visibility="gone"/>
+
+
+    <Button
+        android:id="@+id/bt_devicelist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设备列表" />
+
+</LinearLayout>

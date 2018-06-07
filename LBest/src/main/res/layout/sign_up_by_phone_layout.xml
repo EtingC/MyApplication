@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="26dp"
+    android:paddingRight="26dp"
+    android:paddingTop="16dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/configdevice_success" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="@string/str_regist_success"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_hassendcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/tabgray_selected"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:id="@+id/phone_verification_code_layout"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/btn_get_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:text="@string/str_resend_verification_code"
+                    android:textColor="#bbbbbb"
+                    android:textSize="18sp" />
+
+                <View
+                    android:id="@+id/dividline"
+                    android:layout_width="1px"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/btn_get_code"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#aca8a5" />
+
+                <EditText
+                    android:id="@+id/it_verification_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="46dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/dividline"
+                    android:background="@null"
+                    android:textColor="#333333"
+                    android:textColorHint="#bbbbbb"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/line_gray_bg" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <com.lbest.rm.view.InputTextView
+                    android:id="@+id/it_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toLeftOf="@+id/iv_password1"
+                    android:textSize="18sp"
+                    app:hint="@string/str_singup_password" />
+
+                <ImageButton
+                    android:id="@+id/iv_password1"
+                    android:layout_width="20dp"
+                    android:layout_height="46dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/password_invisiable" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/line_gray_bg" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <com.lbest.rm.view.InputTextView
+                    android:id="@+id/it_password2"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toLeftOf="@+id/iv_password2"
+                    android:textSize="18sp"
+                    app:hint="@string/str_singup_password2" />
+
+                <ImageButton
+                    android:id="@+id/iv_password2"
+                    android:layout_width="20dp"
+                    android:layout_height="46dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/password_invisiable" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/line_gray_bg" />
+
+            <Button
+                android:id="@+id/btn_next2"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_yellow_selector"
+                android:enabled="false"
+                android:text="@string/str_mainaccount_register"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/phone_num_layout"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/btn_country_code"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="CN+86"
+                    android:textColor="#333333"
+                    android:textSize="18sp" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="28dp"
+                    android:background="#aca8a5"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <com.lbest.rm.view.InputTextView
+                    android:id="@+id/phone_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/line_gray_bg" />
+
+            <TextView
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/btn_yellow_selector"
+                android:gravity="center"
+                android:text="@string/str_next"
+                android:textSize="16sp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

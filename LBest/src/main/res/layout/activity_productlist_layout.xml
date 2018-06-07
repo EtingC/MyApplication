@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/productlist_search_height"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+        <RelativeLayout
+            android:id="@+id/rl_search"
+            android:layout_toLeftOf="@+id/bt_cancle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/input_bg_round_tran_gray"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true">
+
+            <LinearLayout
+                android:id="@+id/ll_searchcontainer"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+                <ImageView
+                    android:id="@+id/iv_search"
+                    android:layout_width="@dimen/productlist_search_icon_size"
+                    android:layout_height="@dimen/productlist_search_icon_size"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/search_icon"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginRight="10dp"/>
+                <com.lbest.rm.view.InputTextView
+                    android:id="@+id/it_model"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    app:hint="@string/str_searchproduct_hint" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:layout_width="@dimen/productlist_search_bt_width"
+            android:layout_height="@dimen/productlist_search_bt_height"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_searchproduct_cancle"
+            android:textSize="@dimen/productlist_search_ts" />
+    </RelativeLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/lv_productlist"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0px"/>
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/wificonfig_margain_top"
+        android:text="4/4"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/wificonfig_order_ts" />
+
+    <RelativeLayout
+        android:id="@+id/rl_avtive_image"
+        android:layout_width="@dimen/configloading_processoval_width"
+        android:layout_height="@dimen/configloading_processoval_height"
+        android:layout_below="@+id/tv_order"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/oval">
+
+        <ProgressBar
+            android:id="@+id/todo_progress"
+            android:layout_width="@dimen/configloading_process_width"
+            android:layout_height="@dimen/configloading_process_height"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:indeterminate="false"
+            android:indeterminateDrawable="@drawable/yellow_progressbar_img" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/wifides"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_avtive_image"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_device_waiteactive"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_howactive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@string/str_deviceactive_state"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</RelativeLayout>

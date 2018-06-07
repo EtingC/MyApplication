@@ -1,0 +1,1 @@
+var PROFILE = {"desc":{"cat":"41","model":"SP 2","pid":"00000000000000000000000011270000","vendor":""},"issubdev":0,"protocol":[],"srvs":["4.1.50"],"subscribable":0,"suids":[{"intfs":{"pwr":[{"act":3,"idx":1,"ifttt":0,"in":[1,1,0]}]},"suid":""}],"timeout":[3,5],"ver":"","wificonfigtype":4};

@@ -1,0 +1,1 @@
+var STRINGS = {"cat_name":"智能插座","dev_name":"SP 2","error":{"cmd":"Execute command error","device_offline":"Device is offline","sdk":"SDK init failed"},"intfs":{"pwr":{"name":"电源开关","values":{"0":"关","1":"开"}}},"vendor_name":"BroadLink"};

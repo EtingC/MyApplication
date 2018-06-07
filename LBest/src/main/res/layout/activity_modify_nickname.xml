@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F3F3F3"
+    tools:context="com.lbest.rm.ModifyNicknameActivity">
+    <include layout="@layout/toolbar_layout" />
+
+    <com.lbest.rm.view.InputTextView
+        android:id="@+id/ip_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/nickname_input_ts"
+        android:lines="1"
+        android:background="#FFFFFF"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_gray_bg" />
+</LinearLayout>

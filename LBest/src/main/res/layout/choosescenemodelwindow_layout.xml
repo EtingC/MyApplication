@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/bt_open"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/choosepic_window_btheight"
+        android:layout_weight="1"
+        android:background="@drawable/wanke_circup"
+        android:text="@string/str_scene_open"
+        android:textColor="@color/tabgray_selected"
+        android:textSize="@dimen/choosepic_window_ts" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:alpha="0.5"
+        android:background="@color/line_gray_bg" />
+
+    <Button
+        android:id="@+id/bt_close"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/choosepic_window_btheight"
+        android:layout_weight="1"
+        android:background="@drawable/wanke_nocirc"
+        android:text="@string/str_scene_close"
+        android:textColor="@color/tabgray_selected"
+        android:textSize="@dimen/choosepic_window_ts" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:alpha="0.5"
+        android:background="@color/line_gray_bg" />
+
+    <Button
+        android:id="@+id/bt_open_close"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/choosepic_window_btheight"
+        android:layout_weight="1"
+        android:background="@drawable/wanke_circdown"
+        android:text="@string/str_scene_openclose"
+        android:textColor="@color/tabgray_selected"
+        android:textSize="@dimen/choosepic_window_ts" />
+
+
+    <Button
+        android:id="@+id/bt_cancle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/choosepic_window_btheight"
+        android:layout_marginTop="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/wanke_circall"
+        android:text="@string/str_choosepic_cancle"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/choosepic_window_ts" />
+</LinearLayout>

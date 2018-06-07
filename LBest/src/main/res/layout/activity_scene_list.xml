@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lbest.rm.SceneListActivity">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_addscene"
+        android:layout_below="@+id/toolbar_contain"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <ListView
+            android:id="@+id/lv_scenelist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/addscene_img_width"
+                android:layout_height="@dimen/addscene_img_height"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitCenter"
+                android:src="@drawable/noscene_img" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="@string/str_noscene"
+                android:textColor="@color/tabgray"
+                android:textSize="@dimen/addscene_ts" />
+
+
+            <Button
+                android:id="@+id/bt_addscene"
+                android:layout_width="@dimen/addscene_width"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/addscene_bg"
+                android:text="@string/str_addscene"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/addscene_ts" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_addscene"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/addscene_bottontool_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_above="@+id/ll_addscene"
+            android:background="@drawable/line_long" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/addscene_bottontool_size"
+                android:layout_height="@dimen/addscene_bottontool_size"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitCenter"
+                android:src="@drawable/addscene"
+                android:text="@string/str_mainaccount_noregister" />
+
+            <TextView
+                android:id="@+id/tv_addscene"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dp"
+                android:clickable="true"
+                android:text="@string/str_addscene"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/addscene_bottontool_ts" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

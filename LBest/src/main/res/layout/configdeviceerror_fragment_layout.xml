@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/wificonfig_margain_top"
+        android:text="4/4"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/wificonfig_order_ts" />
+
+    <LinearLayout
+        android:id="@+id/wifides"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/iv_erroricon"
+            android:layout_width="@dimen/wificonfig_image_width"
+            android:layout_height="@dimen/wificonfig_image_height"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:src="@drawable/configdevice_fail" />
+
+        <TextView
+            android:id="@+id/tv_errorresult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="@string/str_device_waiteactive"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_texttitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="38dp"
+            android:layout_marginLeft="38dp"
+            android:gravity="left"
+            android:text="@string/str_configdeviceerror_title"
+            android:textColor="#333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_erroradvice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="38dp"
+            android:layout_marginLeft="38dp"
+            android:lineSpacingExtra="4dp"
+            android:gravity="left"
+            android:text="@string/str_deviceactive_state"
+            android:textColor="@color/gray"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+</RelativeLayout>

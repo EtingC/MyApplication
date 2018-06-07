@@ -1,0 +1,1 @@
+var CMDMAP ={"b2a":{"mode":"WorkMode","envtemp":"Temperature_Now_Indoor","mark":"Ventilation_Speed","temp":"Temperature_Target_Indoor","pwr":"OnOff_Power"},"a2b":{"WorkMode":"mode","Temperature_Now_Indoor":"envtemp","Ventilation_Speed":"mark","Temperature_Target_Indoor":"temp","OnOff_Power":"pwr"}};

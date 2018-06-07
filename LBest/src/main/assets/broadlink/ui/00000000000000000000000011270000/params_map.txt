@@ -1,0 +1,74 @@
+{
+    "params_ali": [
+        {
+            "key": "Switch",
+            "name": "开关",
+            "act": "3",
+            "type": 1,
+            "value_range1": [
+                {
+                    "value": "1",
+                    "correspond_value": "1",
+                    "name": "开"
+                },
+                {
+                    "value": "0",
+                    "correspond_value": "0",
+                    "name": "关"
+                }
+            ]
+        },
+        {
+            "key": "temp",
+            "name": "温度",
+            "act": "3",
+            "type": 2,
+            "value_range2": {
+                "min": 1,
+                "max": 100,
+                "step": 1,
+                "mulriple": 1
+            },
+            "unit": "摄氏度"
+        },
+        {
+            "key": "model",
+            "name": "模式",
+            "act": "3",
+            "type": 1,
+            "value_range1": [
+                {
+                    "value": "1",
+                    "correspond_value": "1",
+                    "name": "制冷"
+                },
+                {
+                    "value": "2",
+                    "correspond_value": "2",
+                    "name": "制热"
+                },
+                {
+                    "value": "3",
+                    "correspond_value": "3",
+                    "name": "送风"
+                },
+                {
+                    "value": "4",
+                    "correspond_value": "4",
+                    "name": "除湿"
+                },
+                {
+                    "value": "5",
+                    "correspond_value": "5",
+                    "name": "自动"
+                }
+            ]
+        }
+    ],
+    "params_bl": [
+        {
+            "key": "pwr",
+            "name": "开关"
+        }
+    ]
+}

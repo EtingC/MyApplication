@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:paddingLeft="@dimen/wificonfig_pading_left"
+    android:paddingRight="@dimen/wificonfig_pading_right">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/wificonfig_margain_top"
+        android:text="3/4"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/wificonfig_order_ts" />
+
+    <RelativeLayout
+        android:layout_width="@dimen/configloading_processoval_width"
+        android:layout_height="@dimen/configloading_processoval_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/oval"
+        android:layout_marginTop="10dp">
+        <ImageView
+            android:id="@+id/todo_progress"
+            android:gravity="center"
+            android:layout_width="@dimen/configloading_process_width"
+            android:layout_height="@dimen/configloading_process_height"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/yellow_progress" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:text="@string/str_devices_add_configuring"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/wificonfig_productdes_ts" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:text="@string/str_devices_add_configuring_info"
+        android:textColor="@color/gray"
+        android:textSize="13sp" />
+</LinearLayout>

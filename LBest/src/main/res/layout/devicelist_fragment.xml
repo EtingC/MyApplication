@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context="com.lbest.rm.HomeActivity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/lv_devicelist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:fastScrollEnabled="false"
+            android:smoothScrollbar="true"
+            android:divider="@null"
+            android:dividerHeight="0px"/>
+        <LinearLayout
+            android:id="@+id/ll_nulldevice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="70dp"
+            android:visibility="gone">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/configdevice_fail"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/devicelist_nodevice"
+                android:textSize="14sp"
+                android:textColor="@color/color_hint"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

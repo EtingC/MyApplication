@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_height">45dp</dimen>
+    <dimen name="title_height">45dp</dimen>
+    <dimen name="title_margin_left">16dp</dimen>
+    <dimen name="title_margin_right">16dp</dimen>
+
+    <dimen name="title_ts">18sp</dimen>
+    <dimen name="title_btn_ts">15dp</dimen>
+    <dimen name="title_btn_size">35dp</dimen>
+    <dimen name="title_icon_size">90dp</dimen>
+    <dimen name="title_tv_width">150dp</dimen>
+
+    <dimen name="wificonfig_pading_left">40dp</dimen>
+    <dimen name="wificonfig_pading_right">40dp</dimen>
+
+
+    <dimen name="wificonfig_edittext_height">35dp</dimen>
+    <dimen name="wificonfig_image_width">115dp</dimen>
+    <dimen name="wificonfig_image_height">115dp</dimen>
+    <dimen name="wificonfig_margain_top">50dp</dimen>
+
+    <dimen name="wificonfig_next_ts">16sp</dimen>
+
+    <dimen name="productinfo_image_height">261dp</dimen>
+    <dimen name="productinfo_image_width">169dp</dimen>
+
+    <dimen name="wificonfig_order_ts">15sp</dimen>
+    <dimen name="wificonfig_productdes_ts">15sp</dimen>
+
+    <dimen name="configloading_process_height">50dp</dimen>
+    <dimen name="configloading_process_width">50dp</dimen>
+    <dimen name="configloading_processoval_height">105dp</dimen>
+    <dimen name="configloading_processoval_width">105dp</dimen>
+
+    <dimen name="leftmenu_icon_height">90dp</dimen>
+    <dimen name="leftmenu_icon_width">90dp</dimen>
+    <dimen name="leftmenu_id_ts">14sp</dimen>
+    <dimen name="leftmenu_item_ts">16sp</dimen>
+    <dimen name="leftmenu_padding_top">60dp</dimen>
+    <dimen name="leftmenu_padding_left">16dp</dimen>
+    <dimen name="leftmenu_padding_right">16dp</dimen>
+
+    <dimen name="leftmenu_shadow_width">5dp</dimen>
+    <dimen name="leftmenu_offset">100dp</dimen>
+    <dimen name="leftmenu_item_height">30dp</dimen>
+    <dimen name="leftmenu_item_icon_size">16dp</dimen>
+    <dimen name="leftmenu_arrow_height">16dp</dimen>
+    <dimen name="leftmenu_arrow_width">10dp</dimen>
+
+
+    <dimen name="setting_item_height">45dp</dimen>
+    <dimen name="setting_faceicon_size">50dp</dimen>
+    <dimen name="setting_arrow_height">16dp</dimen>
+    <dimen name="setting_arrow_width">10dp</dimen>
+    <dimen name="setting_ts">16sp</dimen>
+
+    <dimen name="setting_padding_top">40dp</dimen>
+    <dimen name="setting_padding_left">16dp</dimen>
+    <dimen name="setting_padding_right">16dp</dimen>
+
+    <dimen name="nickname_input_ts">16sp</dimen>
+
+    <dimen name="choosepic_window_ts">17sp</dimen>
+    <dimen name="choosepic_window_btheight">55dp</dimen>
+
+    <dimen name="crop_bt_height">55dp</dimen>
+    <dimen name="crop_bt_width">55dp</dimen>
+
+    <dimen name="bl_font_hint_nor_size">14sp</dimen>
+
+    <dimen name="accountmain_autoscrollviewpager_width">220dp</dimen>
+    <dimen name="accountmain_autoscrollviewpager_height">190dp</dimen>
+    <dimen name="accountmain_bottontool_height">45dp</dimen>
+    <dimen name="accountmain_loginbt_height">45dp</dimen>
+    <dimen name="getbackpassword_loginbt_height">45dp</dimen>
+    <dimen name="accountmain_bottontool_ts">16sp</dimen>
+    <dimen name="register_tab_height">40dp</dimen>
+
+    <dimen name="getbackpassword_ts">15sp</dimen>
+    <dimen name="deviceproperty_ts">16sp</dimen>
+    <dimen name="deviceproperty_height">45dp</dimen>
+    <dimen name="deviceproperty_padding_top">40dp</dimen>
+    <dimen name="deviceproperty_padding_left">16dp</dimen>
+    <dimen name="deviceproperty_padding_right">16dp</dimen>
+    <dimen name="deviceproperty_item_height">45dp</dimen>
+    <dimen name="deviceproperty_arrow_height">16dp</dimen>
+    <dimen name="deviceproperty_arrow_width">10dp</dimen>
+    <dimen name="deviceproperty_deviceicon_size">50dp</dimen>
+
+
+    <dimen name="relaccount_item_ts">16sp</dimen>
+    <dimen name="relaccount_item_height">70dp</dimen>
+    <dimen name="relaccount_item_action_width">80dp</dimen>
+
+    <dimen name="devicename_input_ts">16sp</dimen>
+
+    <dimen name="qrcode_height">200dp</dimen>
+    <dimen name="qrcode_width">200dp</dimen>
+    <dimen name="sharedeviceqrcode_ts">16sp</dimen>
+
+    <dimen name="addscene_btn_radius">40dp</dimen>
+    <dimen name="addscene_ts">14sp</dimen>
+    <dimen name="addscene_width">250dp</dimen>
+    <dimen name="addscene_img_height">200dp</dimen>
+    <dimen name="addscene_img_width">200dp</dimen>
+    <dimen name="addscene_item_ts">16dp</dimen>
+
+    <dimen name="addscene_bottontool_height">45dp</dimen>
+    <dimen name="addscene_bottontool_ts">15sp</dimen>
+    <dimen name="addscene_bottontool_size">20dp</dimen>
+
+    <dimen name="scene_item_ts">25sp</dimen>
+    <dimen name="scene_item_des_ts">12sp</dimen>
+    <dimen name="scene_item_bt_height">36dp</dimen>
+    <dimen name="scene_item_bt_width">53dp</dimen>
+
+    <dimen name="scene_edit_ts">16sp</dimen>
+    <dimen name="scene_edit_type_ts">13sp</dimen>
+
+    <dimen name="scene_action_ts">16sp</dimen>
+    <dimen name="scene_action_paramname_ts">12sp</dimen>
+    <dimen name="scene_action_iv_size">30dp</dimen>
+
+    <dimen name="scene_actioncontinue_exit_size">15dp</dimen>
+    <dimen name="scene_actioncontinue_top_height">40dp</dimen>
+    <dimen name="scene_actioncontinue_bottom_height">25dp</dimen>
+    <dimen name="scene_actioncontinue_numberpick_height">150dp</dimen>
+    <dimen name="scene_actioncontinue_select_ts">16sp</dimen>
+    <dimen name="scene_actioncontinue_ts">13sp</dimen>
+
+
+    <dimen name="userdevicelist_item_width">80dp</dimen>
+    <dimen name="userdevicelist_item_height">60dp</dimen>
+    <dimen name="userdevicelist_item_ts">16sp</dimen>
+    <dimen name="userdevicelist_item_icon_height">35dp</dimen>
+    <dimen name="userdevicelist_item_icon_width">66dp</dimen>
+    <dimen name="userdevicelist_item_status_ts">12sp</dimen>
+
+    <dimen name="productlist_item_icon_height">60dp</dimen>
+    <dimen name="productlist_item_icon_width">100dp</dimen>
+    <dimen name="productlist_item_ts">16sp</dimen>
+    <dimen name="productlist_item_model_ts">14sp</dimen>
+
+    <dimen name="productlist_search_ts">14sp</dimen>
+    <dimen name="productlist_search_height">36dp</dimen>
+
+    <dimen name="productlist_search_bt_height">35dp</dimen>
+    <dimen name="productlist_search_bt_width">35dp</dimen>
+    <dimen name="productlist_search_icon_size">14dp</dimen>
+
+
+    <dimen name="modifypassword_ts">14sp</dimen>
+    <dimen name="modifypassword_et_ts">16sp</dimen>
+
+    <dimen name="about_iv_size">80dp</dimen>
+    <dimen name="about_ts">14sp</dimen>
+    <dimen name="about_brand_ts">12sp</dimen>
+
+    <dimen name="loginerror_ts">14sp</dimen>
+    <dimen name="loginerror_title_ts">18sp</dimen>
+
+    <dimen name="product_item_arrow_height">16dp</dimen>
+    <dimen name="product_item_arrow_width">10dp</dimen>
+
+    <dimen name="main_tabtxt_ts">11sp</dimen>
+    <dimen name="main_tabicon_size">22dp</dimen>
+    <dimen name="main_tab_height">50dp</dimen>
+</resources>

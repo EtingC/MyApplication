@@ -1,0 +1,125 @@
+apply plugin: 'com.android.application'
+def time = new java.text.SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date())
+android {
+    compileSdkVersion 23
+    buildToolsVersion '25.0.3'
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        applicationId "com.lbest.rm"
+        minSdkVersion 18
+        targetSdkVersion 22
+        versionCode 4
+        versionName "1.3"
+        multiDexEnabled true
+
+        ndk {
+            abiFilters "armeabi"
+        }
+    }
+	
+	
+	lintOptions {  
+        abortOnError false  
+    }  
+
+    signingConfigs {
+        debug {
+            keyAlias 'newbroadlink'
+            keyPassword 'new_broadlink'
+            storeFile file('configure/new_broadlink.broadlink')
+            storePassword 'new_broadlink'
+        }
+
+		
+        release {
+            keyAlias 'newbroadlink'
+            keyPassword 'new_broadlink'
+            storeFile file('configure/new_broadlink.broadlink')
+            storePassword 'new_broadlink'
+        }
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+
+            buildConfigField "String", "License", "\"FJfuJMvyNn3sw/jt0E089EjYJCx00DfL1cozOdZqpPagfnBUwCG5lTpfgMydwwdnxzQZWgAAAAB9NpydyrFSUtnVczXPZzCKuF/g+RbQkKz6vW+j8pKatCjPGNS8vbMTL2q2DnAOfM2zQ8KDv0v9YmR5MJmQrYwFBdfyRAv01RZMW2+sVsjOhQAAAAA=\""
+            buildConfigField "String", "ChannelID", "\"1497ee24cbf2367decc3f8edd04d3cf4\""
+            buildConfigField "int", "APP_VERSION", "1"
+        }
+        debug {
+            signingConfig signingConfigs.debug
+
+            buildConfigField "String", "License", "\"FJfuJMvyNn3sw/jt0E089EjYJCx00DfL1cozOdZqpPagfnBUwCG5lTpfgMydwwdnxzQZWgAAAAB9NpydyrFSUtnVczXPZzCKuF/g+RbQkKz6vW+j8pKatCjPGNS8vbMTL2q2DnAOfM2zQ8KDv0v9YmR5MJmQrYwFBdfyRAv01RZMW2+sVsjOhQAAAAA=\""
+            buildConfigField "String", "ChannelID", "\"1497ee24cbf2367decc3f8edd04d3cf4\""
+            buildConfigField "int", "APP_VERSION", "1"
+        }
+    }
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "2048M"
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+	
+	
+	android.applicationVariants.all { variant ->
+    variant.outputs.each { output ->
+        def outputFile = output.outputFile;
+		def buildType = "release";
+        def debug = 'debug.apk';
+        def release = 'release.apk';
+		def versionName = android.defaultConfig.versionName;
+        def suffix_ver;
+        if (outputFile != null) {
+            if(outputFile.name.endsWith(debug)){
+                suffix_ver = debug;
+            }else if(outputFile.name.endsWith(release)){
+                suffix_ver = release;
+            }
+            if(suffix_ver != null){
+                //这里修改apk文件名
+                def fileName = "Lbest_v${versionName}_${time}_${buildType}.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+                outputFile.delete()
+            }
+        }
+    }
+}
+
+ lintOptions {
+          abortOnError false
+      }
+}
+
+
+
+
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // openSDK
+    compile project(':pulltorefreshlibrary')
+    compile files('libs/httpmime-4.1.2.jar')
+    compile files('libs/libImageLoader.jar')
+    compile files('libs/libImageBlur.jar')
+    compile files('libs/cordova.jar')
+    compile 'com.aliyun.alink:opensdk:0.1.3.2'
+    compile 'com.android.support:support-v4:25.0.0'
+    compile 'com.android.support:design:25.0.0'
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:cardview-v7:25.0.0'
+    compile files('libs/ormlite-android-4.48.jar')
+    compile files('libs/gson-2.2.2.jar')
+    compile files('libs/httplite-3.0.1.jar')
+    compile files('libs/LogcatHelper.jar')
+}

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="20dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.lbest.rm.view.InputTextView
+                android:id="@+id/it_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/accountmain_loginbt_height"
+                android:background="@drawable/input_bg_round_tran_gray"/>
+
+            <com.lbest.rm.view.InputTextView
+                android:id="@+id/it_password2"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="@dimen/accountmain_loginbt_height"
+                android:background="@drawable/input_bg_round_tran_gray"/>
+
+            <Button
+                android:id="@+id/btn_next2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/accountmain_loginbt_height"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_yellow_selector"
+                android:enabled="false"
+                android:text="@string/str_getbackpassword_sure"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.lbest.rm.view.InputTextView
+                android:background="@drawable/input_bg_round_tran_gray"
+                android:id="@+id/account_email_view"
+                android:layout_width="match_parent"
+                android:layout_height="45dp" />
+
+            <RelativeLayout
+                android:id="@+id/phone_verification_code_layout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_bg_round_tran_gray">
+
+                <Button
+                    android:id="@+id/btn_get_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:text="@string/str_send_verification_code"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/btn_get_code"
+                    android:id="@+id/dividline"
+                    android:background="#aca8a5" />
+
+                <com.lbest.rm.view.InputTextView
+                    android:id="@+id/it_verification_code"
+                    android:layout_width="wrap_content"
+                    android:layout_toLeftOf="@+id/dividline"
+                    android:layout_height="45dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/err_hint_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/holo_red_light" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_yellow_selector"
+                android:enabled="false"
+                android:text="@string/str_next"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

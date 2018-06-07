@@ -1,0 +1,108 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item> <!--浅蓝色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> <!--深蓝色-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionOverflowButtonStyle">@style/OverflowStyle</item>
+        <item name="toolbarNavigationButtonStyle">@style/myToolbarNavigationButtonStyle</item>
+        <item name="toolbarStyle">@style/myToolbarStyle</item>
+    </style>
+
+    <style name="DNAH5AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item> <!--浅蓝色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> <!--深蓝色-->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="OverflowStyle" parent="Base.Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/add_overflow</item>
+        <item name="android:width">10dp</item>
+        <item name="android:height">10dp</item>
+    </style>
+
+    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item> <!--新增一个item，用于控制menu-->
+    </style>
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--把该属性改为false即可使menu位置位于toolbar之下-->
+    </style>
+
+    <style name="CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <style name="CustomProgressDialog" parent="@style/CustomDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 模糊 -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <!-- android:textColorPrimary is the color of the title text in the Toolbar  -->
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <!-- actionMenuTextColor is the color of the text of action (menu) items  -->
+        <item name="actionMenuTextColor">@color/tabgray_selected</item>
+        <!-- Tints the input fields like checkboxes and text fields -->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- This configures the styles for the title within the Toolbar  -->
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">21dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="BLTheme.Dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@drawable/mm_trans</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@style/DiaLogAnimation</item>
+    </style>
+
+    <style name="DiaLogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
+
+
+    <style name="ActivityStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item> <!--浅蓝色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> <!--深蓝色-->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="myToolbarStyle" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:paddingLeft">12dp</item>
+    </style>
+
+    <style name="myToolbarNavigationButtonStyle" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

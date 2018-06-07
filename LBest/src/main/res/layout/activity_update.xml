@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F3F3">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <RelativeLayout
+        android:layout_below="@+id/toolbar_contain"
+        android:id="@+id/rl_currentversion"
+        android:layout_width="match_parent"
+        android:background="@drawable/transparent_selector"
+        android:layout_height="@dimen/setting_item_height"
+        android:paddingLeft="26dp"
+        android:paddingRight="26dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_currentversion"
+            android:textSize="@dimen/setting_ts" />
+
+        <TextView
+            android:id="@+id/tv_currentversion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/setting_ts" />
+    </RelativeLayout>
+
+    <View
+        android:layout_below="@+id/rl_currentversion"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_gray_bg"
+        android:id="@+id/view_line"
+        />
+
+    <RelativeLayout
+        android:layout_below="@+id/view_line"
+        android:id="@+id/rl_newversion"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:background="@drawable/transparent_selector"
+        android:paddingLeft="26dp"
+        android:paddingRight="26dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/str_latestversion"
+            android:textSize="@dimen/setting_ts" />
+
+        <TextView
+            android:id="@+id/tv_latestversion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/setting_ts" />
+    </RelativeLayout>
+    <View
+        android:layout_below="@+id/rl_newversion"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_gray_bg"
+        android:id="@+id/view_line3"
+        />
+
+    <TextView
+        android:layout_below="@+id/view_line3"
+        android:id="@+id/tv_upgradeinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/setting_ts"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/tabgray_selected"/>
+
+    <View
+        android:layout_above="@+id/bt_update"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_gray_bg"
+        android:id="@+id/view_line1"
+        />
+    <TextView
+        android:id="@+id/bt_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_update"
+        android:textSize="@dimen/setting_ts"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_above="@+id/view_line2"
+        android:textColor="@color/colorAccent"/>
+    <View
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_gray_bg"
+        android:id="@+id/view_line2"
+        />
+</RelativeLayout>

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/pulltorefreshlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/default_ptr_flip.png",
+        "source": "/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/pulltorefreshlibrary/build/intermediates/bundles/debug/res/drawable-hdpi-v4/default_ptr_flip.png"
+    },
+    {
+        "merged": "/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/pulltorefreshlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/default_ptr_rotate.png",
+        "source": "/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/pulltorefreshlibrary/build/intermediates/bundles/debug/res/drawable-hdpi-v4/default_ptr_rotate.png"
+    },
+    {
+        "merged": "/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/pulltorefreshlibrary/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/indicator_arrow.png",
+        "source": "/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/pulltorefreshlibrary/build/intermediates/bundles/debug/res/drawable-hdpi-v4/indicator_arrow.png"
+    }
+]

@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DNA kit</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+
+	<!-- pack:css -->
+
+<style>
+/** vim:ts=2:sts=2:sw=2:
+ * common class/id style here
+ */
+@charset "UTF-8";
+* {
+	border: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	user-select: none;
+
+	-webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+	position: relative;
+	height: 100%;
+	overflow-x: hidden;
+}
+
+html {
+	font-size: 12pt;
+}
+
+body {
+	background-color: white;
+}
+
+a, input, select, textarea {
+	outline:0;
+}
+
+.hidden {
+	display: none !important;
+}
+
+#kit-content,
+.kit-content {
+	width: 100vw !important;
+	background-color: white;
+}
+
+/********** popup **********/
+#kit-popup-layer {
+	position: fixed;
+	width: 100vw !important;
+	height: 100vh !important;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0);
+}
+#kit-popup-layer.menubg {
+	background-color: rgba(0,0,0,0.2);
+}
+#kit-popup-layer.errorbg {
+	background-color: rgba(0,0,0,0.4);
+}
+#kit-popup-layer.errorbg > div {
+	display: none;
+}
+
+#kit-popup-wait,
+#kit-popup-msgbox,
+#kit-popup-errbox {
+	position: fixed;
+	background-color: rgba(0,0,0,0.4);
+	color: white;
+}
+#kit-popup-wait {
+	border-radius: 20%;
+}
+#kit-popup-msgbox,
+#kit-popup-errbox {
+	font-size: 12pt;
+	border-radius: 8pt;
+}
+
+@-webkit-keyframes kit-wait-spin {
+	from { -webkit-transform: rotate(0deg); }
+	to { -webkit-transform: rotate(360deg); }
+}
+@keyframes kit-wait-spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+#kit-popup-wait-ring {
+	outline: 1pt solid transparent;
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 25%;
+	top: 25%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 50%;
+	border: 2pt solid white;
+	background-color: transparent;
+	-webkit-animation: kit-wait-spin 1s linear infinite;
+	animation: kit-wait-spin 1s linear infinite;
+}
+#kit-popup-wait-ring:after {
+	content: " ";
+	position: absolute;
+	width: 20%;
+	height: 20%;
+	right: 40%;
+	top: 0;
+	border-radius: 50%;
+	background-color: white;
+}
+
+#kit-popup-msgbox-text,
+#kit-popup-errbox-text {
+	display: block;
+	max-width: 80vw;
+	padding: 8pt;
+	word-wrap: break-word;
+}
+#kit-popup-layer.errorbg > #kit-popup-errbox {
+	display: block;
+}
+
+/********** controls **********/
+.kit-ctrl-container {
+	position: absolute;
+	border: none;
+	background-color: transparent;
+}
+
+.kit-onoff {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 2px solid #ccc; /* use pt could leave a slight white gap between border and the thumb (iOS) */
+	background-color: white;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: border-color 0.2s linear;
+	transition: border-color 0.2s linear;
+	box-shadow: 1pt 1pt 2pt #aaa;
+}
+
+.kit-onoff > .kit-onoff-thumb {
+	width: 50%;
+	height: 100%;
+	box-sizing: border-box;
+	border: none;
+	position: absolute;
+	background-color: #ccc;
+	left: 0;
+	top: 0;
+	-webkit-transition: left 0.2s linear, background-color 0.2s linear;
+	transition: left 0.2s linear, background-color 0.2s linear;
+}
+
+.kit-onoff.kit-on {
+	border-color: #55ff55;
+}
+.kit-onoff.kit-on > .kit-onoff-thumb {
+	background-color: #55ff55;
+	left: 50%;
+}
+
+.kit-plain-view {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background-color: transparent;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.kit-plain-view > .kit-plain-keyname {
+	position: absolute;
+	width: 48%;
+	left: 0;
+}
+.kit-plain-view > .kit-plain-value {
+	position: absolute;
+	width: 48%;
+	right: 0;
+	text-align: right;
+}
+.kit-plain-view > .kit-plain-value.kit-clickable {
+	color: #88d;
+}
+
+.kit-popup-menu {
+	box-sizing: border-box;
+	position: absolute;
+	width: 100%;
+	width: 100vw;
+	border: 1px solid gray;
+	background-color: white;
+	-webkit-transition: -webkit-transform 0.2s linear;
+	transition: transform 0.2s linear;
+}
+.kit-popup-menu > li {
+	height: 3em;
+	line-height: 3em;
+	border-bottom: 1px solid gray;
+	text-align: center;
+	position: relative;
+}
+.kit-popup-menu > li.curr:before {
+	content:"";
+	margin:1.3em;
+	width: 0.4em;
+	height: 0.4em;
+	position: absolute;
+	border-radius: 50%;
+	right: .5em;
+	top: 0;
+	display: block;
+	background-color: black;
+}
+
+.kit-slider-panel {
+	box-sizing: border-box;
+	position: absolute;
+	width: 100%;
+	width: 100vw;
+	border: 1px solid gray;
+	background-color: white;
+	-webkit-transition: -webkit-transform 0.2s linear;
+	transition: transform 0.2s linear;
+}
+.kit-slider-value {
+	text-align: center;
+	padding: 0.5em 0;
+}
+.kit-slider-container {
+	padding: 16px 16px 0 16px;
+	margin-bottom: 4em;
+	position: relative;
+}
+.kit-slider-bar {
+	height: 0;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #ccc;
+}
+.kit-slider-thumb {
+	position: absolute;
+	box-sizing: border-box;
+	width: 20px;
+	height: 40px;
+	border-color: #5c5;
+	background-color: #5f5;
+	border-radius: 2px;
+	top: -3px;
+}
+.kit-slider-start,
+.kit-slider-end {
+	font-size: 0.8em;
+	position: absolute;
+	bottom: -3.8em;
+}
+.kit-slider-start {
+	left: 8px;
+}
+.kit-slider-end {
+	right: 8px;
+}
+
+
+
+/** grid system **/
+.kit-grid-cell {
+	display: block;
+
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+
+	position: absolute;
+	background-color: #eeeeee;
+
+	z-index: -1;
+}
+.kit-grid-cell:nth-child(2n+1) {
+	background-color: white;
+}
+
+
+
+
+body {
+	background-color: #eef;
+}
+
+</style>
+<!-- endpack -->
+	<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<!-- pack:js -->
+
+<script type="text/javascript">
+var PROFILE = {
+  "desc": {
+    "cat": "41",
+    "model": "SP 2",
+    "pid": "00000000000000000000000078690000",
+    "vendor": ""
+  },
+  "issubdev": 0,
+  "protocol": [],
+  "srvs": [
+    "4.1.50"
+  ],
+  "subscribable": 0,
+  "suids": [
+    {
+      "intfs": {
+        "pwr": [
+          {
+            "act": 3,
+            "idx": 1,
+            "ifttt": 0,
+            "in": [
+              1,
+              1,
+              0
+            ]
+          }
+        ]
+      },
+      "suid": ""
+    }
+  ],
+  "timeout": [
+    3,
+    5
+  ],
+  "ver": "",
+  "wificonfigtype": 4
+};var STRINGS = {"cat_name":"智能插座","dev_name":"SP 2","error":{"cmd":"Execute command error","device_offline":"Device is offline","sdk":"SDK init failed"},"intfs":{"pwr":{"name":"电源开关","values":{"0":"关","1":"开"}}},"vendor_name":"BroadLink"};(function(definition){if(typeof bootstrap==="function"){bootstrap("promise",definition)}else if(typeof exports==="object"){module.exports=definition()}else if(typeof define==="function"&&define.amd){define(definition)}else if(typeof ses!=="undefined"){if(!ses.ok()){return}else{ses.makeQ=definition}}else{Q=definition()}})(function(){"use strict";var hasStacks=false;try{throw new Error}catch(e){hasStacks=!!e.stack}var qStartingLine=captureLine();var qFileName;var noop=function(){};var nextTick=function(){var head={task:void 0,next:null};var tail=head;var flushing=false;var requestTick=void 0;var isNodeJS=false;function flush(){while(head.next){head=head.next;var task=head.task;head.task=void 0;var domain=head.domain;if(domain){head.domain=void 0;domain.enter()}try{task()}catch(e){if(isNodeJS){if(domain){domain.exit()}setTimeout(flush,0);if(domain){domain.enter()}throw e}else{setTimeout(function(){throw e},0)}}if(domain){domain.exit()}}flushing=false}nextTick=function(task){tail=tail.next={task:task,domain:isNodeJS&&process.domain,next:null};if(!flushing){flushing=true;requestTick()}};if(typeof process!=="undefined"&&process.nextTick){isNodeJS=true;requestTick=function(){process.nextTick(flush)}}else if(typeof setImmediate==="function"){if(typeof window!=="undefined"){requestTick=setImmediate.bind(window,flush)}else{requestTick=function(){setImmediate(flush)}}}else if(typeof MessageChannel!=="undefined"){var channel=new MessageChannel;channel.port1.onmessage=function(){requestTick=requestPortTick;channel.port1.onmessage=flush;flush()};var requestPortTick=function(){channel.port2.postMessage(0)};requestTick=function(){setTimeout(flush,0);requestPortTick()}}else{requestTick=function(){setTimeout(flush,0)}}return nextTick}();var call=Function.call;function uncurryThis(f){return function(){return call.apply(f,arguments)}}var array_slice=uncurryThis(Array.prototype.slice);var array_reduce=uncurryThis(Array.prototype.reduce||function(callback,basis){var index=0,length=this.length;if(arguments.length===1){do{if(index in this){basis=this[index++];break}if(++index>=length){throw new TypeError}}while(1)}for(;index<length;index++){if(index in this){basis=callback(basis,this[index],index)}}return basis});var array_indexOf=uncurryThis(Array.prototype.indexOf||function(value){for(var i=0;i<this.length;i++){if(this[i]===value){return i}}return-1});var array_map=uncurryThis(Array.prototype.map||function(callback,thisp){var self=this;var collect=[];array_reduce(self,function(undefined,value,index){collect.push(callback.call(thisp,value,index,self))},void 0);return collect});var object_create=Object.create||function(prototype){function Type(){}Type.prototype=prototype;return new Type};var object_hasOwnProperty=uncurryThis(Object.prototype.hasOwnProperty);var object_keys=Object.keys||function(object){var keys=[];for(var key in object){if(object_hasOwnProperty(object,key)){keys.push(key)}}return keys};var object_toString=uncurryThis(Object.prototype.toString);function isObject(value){return value===Object(value)}function isStopIteration(exception){return object_toString(exception)==="[object StopIteration]"||exception instanceof QReturnValue}var QReturnValue;if(typeof ReturnValue!=="undefined"){QReturnValue=ReturnValue}else{QReturnValue=function(value){this.value=value}}var hasES6Generators;try{new Function("(function* (){ yield 1; })");hasES6Generators=true}catch(e){hasES6Generators=false}var STACK_JUMP_SEPARATOR="From previous event:";function makeStackTraceLong(error,promise){if(hasStacks&&promise.stack&&typeof error==="object"&&error!==null&&error.stack&&error.stack.indexOf(STACK_JUMP_SEPARATOR)===-1){var stacks=[];for(var p=promise;!!p;p=p.source){if(p.stack){stacks.unshift(p.stack)}}stacks.unshift(error.stack);var concatedStacks=stacks.join("\n"+STACK_JUMP_SEPARATOR+"\n");error.stack=filterStackString(concatedStacks)}}function filterStackString(stackString){var lines=stackString.split("\n");var desiredLines=[];for(var i=0;i<lines.length;++i){var line=lines[i];if(!isInternalFrame(line)&&!isNodeFrame(line)&&line){desiredLines.push(line)}}return desiredLines.join("\n")}function isNodeFrame(stackLine){return stackLine.indexOf("(module.js:")!==-1||stackLine.indexOf("(node.js:")!==-1}function getFileNameAndLineNumber(stackLine){var attempt1=/at .+ \((.+):(\d+):(?:\d+)\)$/.exec(stackLine);if(attempt1){return[attempt1[1],Number(attempt1[2])]}var attempt2=/at ([^ ]+):(\d+):(?:\d+)$/.exec(stackLine);if(attempt2){return[attempt2[1],Number(attempt2[2])]}var attempt3=/.*@(.+):(\d+)$/.exec(stackLine);if(attempt3){return[attempt3[1],Number(attempt3[2])]}}function isInternalFrame(stackLine){var fileNameAndLineNumber=getFileNameAndLineNumber(stackLine);if(!fileNameAndLineNumber){return false}var fileName=fileNameAndLineNumber[0];var lineNumber=fileNameAndLineNumber[1];return fileName===qFileName&&lineNumber>=qStartingLine&&lineNumber<=qEndingLine}function captureLine(){if(!hasStacks){return}try{throw new Error}catch(e){var lines=e.stack.split("\n");var firstLine=lines[0].indexOf("@")>0?lines[1]:lines[2];var fileNameAndLineNumber=getFileNameAndLineNumber(firstLine);if(!fileNameAndLineNumber){return}qFileName=fileNameAndLineNumber[0];return fileNameAndLineNumber[1]}}function deprecate(callback,name,alternative){return function(){if(typeof console!=="undefined"&&typeof console.warn==="function"){console.warn(name+" is deprecated, use "+alternative+" instead.",new Error("").stack)}return callback.apply(callback,arguments)}}function Q(value){if(isPromise(value)){return value}if(isPromiseAlike(value)){return coerce(value)}else{return fulfill(value)}}Q.resolve=Q;Q.nextTick=nextTick;Q.longStackSupport=false;Q.defer=defer;function defer(){var messages=[],progressListeners=[],resolvedPromise;var deferred=object_create(defer.prototype);var promise=object_create(Promise.prototype);promise.promiseDispatch=function(resolve,op,operands){var args=array_slice(arguments);if(messages){messages.push(args);if(op==="when"&&operands[1]){progressListeners.push(operands[1])}}else{nextTick(function(){resolvedPromise.promiseDispatch.apply(resolvedPromise,args)})}};promise.valueOf=function(){if(messages){return promise}var nearerValue=nearer(resolvedPromise);if(isPromise(nearerValue)){resolvedPromise=nearerValue}return nearerValue};promise.inspect=function(){if(!resolvedPromise){return{state:"pending"}}return resolvedPromise.inspect()};if(Q.longStackSupport&&hasStacks){try{throw new Error}catch(e){promise.stack=e.stack.substring(e.stack.indexOf("\n")+1)}}function become(newPromise){resolvedPromise=newPromise;promise.source=newPromise;array_reduce(messages,function(undefined,message){nextTick(function(){newPromise.promiseDispatch.apply(newPromise,message)})},void 0);messages=void 0;progressListeners=void 0}deferred.promise=promise;deferred.resolve=function(value){if(resolvedPromise){return}become(Q(value))};deferred.fulfill=function(value){if(resolvedPromise){return}become(fulfill(value))};deferred.reject=function(reason){if(resolvedPromise){return}become(reject(reason))};deferred.notify=function(progress){if(resolvedPromise){return}array_reduce(progressListeners,function(undefined,progressListener){nextTick(function(){progressListener(progress)})},void 0)};return deferred}defer.prototype.makeNodeResolver=function(){var self=this;return function(error,value){if(error){self.reject(error)}else if(arguments.length>2){self.resolve(array_slice(arguments,1))}else{self.resolve(value)}}};Q.promise=promise;function promise(resolver){if(typeof resolver!=="function"){throw new TypeError("resolver must be a function.")}var deferred=defer();try{resolver(deferred.resolve,deferred.reject,deferred.notify)}catch(reason){deferred.reject(reason)}return deferred.promise}Q.passByCopy=function(object){return object};Promise.prototype.passByCopy=function(){return this};Q.join=function(x,y){return Q(x).join(y)};Promise.prototype.join=function(that){return Q([this,that]).spread(function(x,y){if(x===y){return x}else{throw new Error("Can't join: not the same: "+x+" "+y)}})};Q.race=race;function race(answerPs){return promise(function(resolve,reject){for(var i=0,len=answerPs.length;i<len;i++){Q(answerPs[i]).then(resolve,reject)}})}Promise.prototype.race=function(){return this.then(Q.race)};Q.makePromise=Promise;function Promise(descriptor,fallback,inspect){if(fallback===void 0){fallback=function(op){return reject(new Error("Promise does not support operation: "+op))}}if(inspect===void 0){inspect=function(){return{state:"unknown"}}}var promise=object_create(Promise.prototype);promise.promiseDispatch=function(resolve,op,args){var result;try{if(descriptor[op]){result=descriptor[op].apply(promise,args)}else{result=fallback.call(promise,op,args)}}catch(exception){result=reject(exception)}if(resolve){resolve(result)}};promise.inspect=inspect;if(inspect){var inspected=inspect();if(inspected.state==="rejected"){promise.exception=inspected.reason}promise.valueOf=function(){var inspected=inspect();if(inspected.state==="pending"||inspected.state==="rejected"){return promise}return inspected.value}}return promise}Promise.prototype.toString=function(){return"[object Promise]"};Promise.prototype.then=function(fulfilled,rejected,progressed){var self=this;var deferred=defer();var done=false;function _fulfilled(value){try{return typeof fulfilled==="function"?fulfilled(value):value}catch(exception){return reject(exception)}}function _rejected(exception){if(typeof rejected==="function"){makeStackTraceLong(exception,self);try{return rejected(exception)}catch(newException){return reject(newException)}}return reject(exception)}function _progressed(value){return typeof progressed==="function"?progressed(value):value}nextTick(function(){self.promiseDispatch(function(value){if(done){return}done=true;deferred.resolve(_fulfilled(value))},"when",[function(exception){if(done){return}done=true;deferred.resolve(_rejected(exception))}])});self.promiseDispatch(void 0,"when",[void 0,function(value){var newValue;var threw=false;try{newValue=_progressed(value)}catch(e){threw=true;if(Q.onerror){Q.onerror(e)}else{throw e}}if(!threw){deferred.notify(newValue)}}]);return deferred.promise};Q.when=when;function when(value,fulfilled,rejected,progressed){return Q(value).then(fulfilled,rejected,progressed)}Promise.prototype.thenResolve=function(value){return this.then(function(){return value})};Q.thenResolve=function(promise,value){return Q(promise).thenResolve(value)};Promise.prototype.thenReject=function(reason){return this.then(function(){throw reason})};Q.thenReject=function(promise,reason){return Q(promise).thenReject(reason)};Q.nearer=nearer;function nearer(value){if(isPromise(value)){var inspected=value.inspect();if(inspected.state==="fulfilled"){return inspected.value}}return value}Q.isPromise=isPromise;function isPromise(object){return isObject(object)&&typeof object.promiseDispatch==="function"&&typeof object.inspect==="function"}Q.isPromiseAlike=isPromiseAlike;function isPromiseAlike(object){return isObject(object)&&typeof object.then==="function"}Q.isPending=isPending;function isPending(object){return isPromise(object)&&object.inspect().state==="pending"}Promise.prototype.isPending=function(){return this.inspect().state==="pending"};Q.isFulfilled=isFulfilled;function isFulfilled(object){return!isPromise(object)||object.inspect().state==="fulfilled"}Promise.prototype.isFulfilled=function(){return this.inspect().state==="fulfilled"};Q.isRejected=isRejected;function isRejected(object){return isPromise(object)&&object.inspect().state==="rejected"}Promise.prototype.isRejected=function(){return this.inspect().state==="rejected"};var unhandledReasons=[];var unhandledRejections=[];var unhandledReasonsDisplayed=false;var trackUnhandledRejections=true;function displayUnhandledReasons(){if(!unhandledReasonsDisplayed&&typeof window!=="undefined"&&window.console){console.warn("[Q] Unhandled rejection reasons (should be empty):",unhandledReasons)}unhandledReasonsDisplayed=true}function logUnhandledReasons(){for(var i=0;i<unhandledReasons.length;i++){var reason=unhandledReasons[i];console.warn("Unhandled rejection reason:",reason)}}function resetUnhandledRejections(){unhandledReasons.length=0;unhandledRejections.length=0;unhandledReasonsDisplayed=false;if(!trackUnhandledRejections){trackUnhandledRejections=true;if(typeof process!=="undefined"&&process.on){process.on("exit",logUnhandledReasons)}}}function trackRejection(promise,reason){if(!trackUnhandledRejections){return}unhandledRejections.push(promise);if(reason&&typeof reason.stack!=="undefined"){unhandledReasons.push(reason.stack)}else{unhandledReasons.push("(no stack) "+reason)}displayUnhandledReasons()}function untrackRejection(promise){if(!trackUnhandledRejections){return}var at=array_indexOf(unhandledRejections,promise);if(at!==-1){unhandledRejections.splice(at,1);unhandledReasons.splice(at,1)}}Q.resetUnhandledRejections=resetUnhandledRejections;Q.getUnhandledReasons=function(){return unhandledReasons.slice()};Q.stopUnhandledRejectionTracking=function(){resetUnhandledRejections();if(typeof process!=="undefined"&&process.on){process.removeListener("exit",logUnhandledReasons)}trackUnhandledRejections=false};resetUnhandledRejections();Q.reject=reject;function reject(reason){var rejection=Promise({when:function(rejected){if(rejected){untrackRejection(this)}return rejected?rejected(reason):this}},function fallback(){return this},function inspect(){return{state:"rejected",reason:reason}});trackRejection(rejection,reason);return rejection}Q.fulfill=fulfill;function fulfill(value){return Promise({when:function(){return value},get:function(name){return value[name]},set:function(name,rhs){value[name]=rhs},"delete":function(name){delete value[name]},post:function(name,args){if(name===null||name===void 0){return value.apply(void 0,args)}else{return value[name].apply(value,args)}},apply:function(thisp,args){return value.apply(thisp,args)},keys:function(){return object_keys(value)}},void 0,function inspect(){return{state:"fulfilled",value:value}})}function coerce(promise){var deferred=defer();nextTick(function(){try{promise.then(deferred.resolve,deferred.reject,deferred.notify)}catch(exception){deferred.reject(exception)}});return deferred.promise}Q.master=master;function master(object){return Promise({isDef:function(){}},function fallback(op,args){return dispatch(object,op,args)},function(){return Q(object).inspect()})}Q.spread=spread;function spread(value,fulfilled,rejected){return Q(value).spread(fulfilled,rejected)}Promise.prototype.spread=function(fulfilled,rejected){return this.all().then(function(array){return fulfilled.apply(void 0,array)},rejected)};Q.async=async;function async(makeGenerator){return function(){function continuer(verb,arg){var result;if(hasES6Generators){try{result=generator[verb](arg)}catch(exception){return reject(exception)}if(result.done){return result.value}else{return when(result.value,callback,errback)}}else{try{result=generator[verb](arg)}catch(exception){if(isStopIteration(exception)){return exception.value}else{return reject(exception)}}return when(result,callback,errback)}}var generator=makeGenerator.apply(this,arguments);var callback=continuer.bind(continuer,"next");var errback=continuer.bind(continuer,"throw");return callback()}}Q.spawn=spawn;function spawn(makeGenerator){Q.done(Q.async(makeGenerator)())}Q["return"]=_return;function _return(value){throw new QReturnValue(value)}Q.promised=promised;function promised(callback){return function(){return spread([this,all(arguments)],function(self,args){return callback.apply(self,args)})}}Q.dispatch=dispatch;function dispatch(object,op,args){return Q(object).dispatch(op,args)}Promise.prototype.dispatch=function(op,args){var self=this;var deferred=defer();nextTick(function(){self.promiseDispatch(deferred.resolve,op,args)});return deferred.promise};Q.get=function(object,key){return Q(object).dispatch("get",[key])};Promise.prototype.get=function(key){return this.dispatch("get",[key])};Q.set=function(object,key,value){return Q(object).dispatch("set",[key,value])};Promise.prototype.set=function(key,value){return this.dispatch("set",[key,value])};Q.del=Q["delete"]=function(object,key){return Q(object).dispatch("delete",[key])};Promise.prototype.del=Promise.prototype["delete"]=function(key){return this.dispatch("delete",[key])};Q.mapply=Q.post=function(object,name,args){return Q(object).dispatch("post",[name,args])};Promise.prototype.mapply=Promise.prototype.post=function(name,args){return this.dispatch("post",[name,args])};Q.send=Q.mcall=Q.invoke=function(object,name){return Q(object).dispatch("post",[name,array_slice(arguments,2)])};Promise.prototype.send=Promise.prototype.mcall=Promise.prototype.invoke=function(name){return this.dispatch("post",[name,array_slice(arguments,1)])};Q.fapply=function(object,args){return Q(object).dispatch("apply",[void 0,args])};Promise.prototype.fapply=function(args){return this.dispatch("apply",[void 0,args])};Q["try"]=Q.fcall=function(object){return Q(object).dispatch("apply",[void 0,array_slice(arguments,1)])};Promise.prototype.fcall=function(){return this.dispatch("apply",[void 0,array_slice(arguments)])};Q.fbind=function(object){var promise=Q(object);var args=array_slice(arguments,1);return function fbound(){return promise.dispatch("apply",[this,args.concat(array_slice(arguments))])}};Promise.prototype.fbind=function(){var promise=this;var args=array_slice(arguments);return function fbound(){return promise.dispatch("apply",[this,args.concat(array_slice(arguments))])}};Q.keys=function(object){return Q(object).dispatch("keys",[])};Promise.prototype.keys=function(){return this.dispatch("keys",[])};Q.all=all;function all(promises){return when(promises,function(promises){var countDown=0;var deferred=defer();array_reduce(promises,function(undefined,promise,index){var snapshot;if(isPromise(promise)&&(snapshot=promise.inspect()).state==="fulfilled"){promises[index]=snapshot.value}else{++countDown;when(promise,function(value){promises[index]=value;if(--countDown===0){deferred.resolve(promises)}},deferred.reject,function(progress){deferred.notify({index:index,value:progress})})}},void 0);if(countDown===0){deferred.resolve(promises)}return deferred.promise})}Promise.prototype.all=function(){return all(this)};Q.allResolved=deprecate(allResolved,"allResolved","allSettled");function allResolved(promises){return when(promises,function(promises){promises=array_map(promises,Q);return when(all(array_map(promises,function(promise){return when(promise,noop,noop)})),function(){return promises})})}Promise.prototype.allResolved=function(){return allResolved(this)};Q.allSettled=allSettled;function allSettled(promises){return Q(promises).allSettled()}Promise.prototype.allSettled=function(){return this.then(function(promises){return all(array_map(promises,function(promise){promise=Q(promise);function regardless(){return promise.inspect()}return promise.then(regardless,regardless)}))})};Q.fail=Q["catch"]=function(object,rejected){return Q(object).then(void 0,rejected)};Promise.prototype.fail=Promise.prototype["catch"]=function(rejected){return this.then(void 0,rejected)};Q.progress=progress;function progress(object,progressed){return Q(object).then(void 0,void 0,progressed)}Promise.prototype.progress=function(progressed){return this.then(void 0,void 0,progressed)};Q.fin=Q["finally"]=function(object,callback){return Q(object)["finally"](callback)};Promise.prototype.fin=Promise.prototype["finally"]=function(callback){callback=Q(callback);return this.then(function(value){return callback.fcall().then(function(){return value})},function(reason){return callback.fcall().then(function(){throw reason})})};Q.done=function(object,fulfilled,rejected,progress){return Q(object).done(fulfilled,rejected,progress)};Promise.prototype.done=function(fulfilled,rejected,progress){var onUnhandledError=function(error){nextTick(function(){makeStackTraceLong(error,promise);if(Q.onerror){Q.onerror(error)}else{throw error}})};var promise=fulfilled||rejected||progress?this.then(fulfilled,rejected,progress):this;if(typeof process==="object"&&process&&process.domain){onUnhandledError=process.domain.bind(onUnhandledError)}promise.then(void 0,onUnhandledError)};Q.timeout=function(object,ms,message){return Q(object).timeout(ms,message)};Promise.prototype.timeout=function(ms,message){var deferred=defer();var timeoutId=setTimeout(function(){deferred.reject(new Error(message||"Timed out after "+ms+" ms"))},ms);this.then(function(value){clearTimeout(timeoutId);deferred.resolve(value)},function(exception){clearTimeout(timeoutId);deferred.reject(exception)},deferred.notify);return deferred.promise};Q.delay=function(object,timeout){if(timeout===void 0){timeout=object;object=void 0}return Q(object).delay(timeout)};Promise.prototype.delay=function(timeout){return this.then(function(value){var deferred=defer();setTimeout(function(){deferred.resolve(value)},timeout);return deferred.promise})};Q.nfapply=function(callback,args){return Q(callback).nfapply(args)};Promise.prototype.nfapply=function(args){var deferred=defer();var nodeArgs=array_slice(args);nodeArgs.push(deferred.makeNodeResolver());this.fapply(nodeArgs).fail(deferred.reject);return deferred.promise};Q.nfcall=function(callback){var args=array_slice(arguments,1);return Q(callback).nfapply(args)};Promise.prototype.nfcall=function(){var nodeArgs=array_slice(arguments);var deferred=defer();nodeArgs.push(deferred.makeNodeResolver());this.fapply(nodeArgs).fail(deferred.reject);return deferred.promise};Q.nfbind=Q.denodeify=function(callback){var baseArgs=array_slice(arguments,1);return function(){var nodeArgs=baseArgs.concat(array_slice(arguments));var deferred=defer();nodeArgs.push(deferred.makeNodeResolver());Q(callback).fapply(nodeArgs).fail(deferred.reject);return deferred.promise}};Promise.prototype.nfbind=Promise.prototype.denodeify=function(){var args=array_slice(arguments);args.unshift(this);return Q.denodeify.apply(void 0,args)};Q.nbind=function(callback,thisp){var baseArgs=array_slice(arguments,2);return function(){var nodeArgs=baseArgs.concat(array_slice(arguments));var deferred=defer();nodeArgs.push(deferred.makeNodeResolver());function bound(){return callback.apply(thisp,arguments)}Q(bound).fapply(nodeArgs).fail(deferred.reject);return deferred.promise}};Promise.prototype.nbind=function(){var args=array_slice(arguments,0);args.unshift(this);return Q.nbind.apply(void 0,args)};Q.nmapply=Q.npost=function(object,name,args){return Q(object).npost(name,args)};Promise.prototype.nmapply=Promise.prototype.npost=function(name,args){var nodeArgs=array_slice(args||[]);var deferred=defer();nodeArgs.push(deferred.makeNodeResolver());this.dispatch("post",[name,nodeArgs]).fail(deferred.reject);return deferred.promise};Q.nsend=Q.nmcall=Q.ninvoke=function(object,name){var nodeArgs=array_slice(arguments,2);var deferred=defer();nodeArgs.push(deferred.makeNodeResolver());Q(object).dispatch("post",[name,nodeArgs]).fail(deferred.reject);return deferred.promise};Promise.prototype.nsend=Promise.prototype.nmcall=Promise.prototype.ninvoke=function(name){var nodeArgs=array_slice(arguments,1);var deferred=defer();nodeArgs.push(deferred.makeNodeResolver());this.dispatch("post",[name,nodeArgs]).fail(deferred.reject);return deferred.promise};Q.nodeify=nodeify;function nodeify(object,nodeback){return Q(object).nodeify(nodeback)}Promise.prototype.nodeify=function(nodeback){if(nodeback){this.then(function(value){nextTick(function(){nodeback(null,value)})},function(error){nextTick(function(){nodeback(error)})})}else{return this}};var qEndingLine=captureLine();return Q});
+/**
+ * Adapter for BroadLink
+ *
+ */
+var ADPT = (function() {
+	var BRIDGE = "BLNativeBridge";
+	var UPDATE_INFO_INTERVAL = 3000; // in ms
+	var UPDATE_STATUS_INTERVAL = 3000; // in ms
+
+	// when the document is ready, load cordova dynamically
+	function onDocumentReady() {
+		document.removeEventListener('DOMContentLoaded', onDocumentReady, false);
+
+		try {
+			if (!window.cordova) {
+				var script = document.createElement('script');
+				script.src = '../../cordova.js';
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+			document.addEventListener('deviceready', onCordovaReady, false);
+		} catch (e) {
+			SDK.debug.log(e);
+		}
+	}
+
+	// when cordova is ready, call 'startup' method
+	function onCordovaReady() {
+		document.removeEventListener('deviceready', onCordovaReady, false);
+		SDK.newPromise(getDeviceInfo).then(function(data) {
+			SDK.em.fire('evtKickoff', {});
+			startUpdateDeviceInfo(true);
+			startUpdateStatus(true);
+		}).catch(function(e) {
+			// alert('Cordova error: ' + e);
+			SDK.debug.trace();
+			SDK.debug.log(e);
+		});
+	}
+
+	function getDeviceInfo(onSuccess, onError) {
+		cordova.exec(onSuccess, onError, BRIDGE, 'deviceinfo', []);
+	}
+
+	function startUpdateDeviceInfo(immediately) {
+		if (immediately) {
+			SDK.newPromise(getDeviceInfo).then(function(data) {
+				var info = JSON.parse(data);
+				var changed = {};
+				var changedCount = 0;
+				for (var k in info) {
+					if (k === 'deviceStatus') {
+						info[k] = (info[k] == 0 || info[k] == 3) ? false : true;
+					}
+					if (deviceInfo[k] !== info[k]) {
+						changed[k] = {
+							oldValue: deviceInfo[k],
+							value: info[k]
+						};
+						++ changedCount;
+						deviceInfo[k] = info[k];
+					}
+				}
+				if (changedCount > 0) {
+					SDK.em.fire('evtDeviceInfoChanged', {changed: changed});
+				}
+				startUpdateDeviceInfo();
+			}).catch(function(e) {
+				SDK.debug.log(e);
+				startUpdateDeviceInfo();
+			});
+		} else {
+			window.setTimeout(function() {
+				startUpdateDeviceInfo(true);
+			}, UPDATE_INFO_INTERVAL);
+		}
+	}
+
+	function startUpdateStatus(immediately) {
+		if (immediately) {
+			if (deviceInfo.deviceID === undefined) {
+				window.setTimeout(function() {
+					startUpdateStatus(true);
+				}, 200);
+				return;
+			}
+			getDeviceStatus(deviceInfo.deviceID, null, []).then(function(data) {
+				startUpdateStatus();
+			}).catch(function(e) {
+				startUpdateStatus();
+			});
+		} else {
+			window.setTimeout(function() {
+				startUpdateStatus(true);
+			}, UPDATE_STATUS_INTERVAL);
+		}
+	}
+	function parseDeviceStatus(response) {
+		if (response.status && response.status !== 0) {
+			SDK.debug.log('status != 0: ' + s);
+			return null;
+		}
+
+		data = response.data;
+		var ps = data.params;
+		var vs = data.vals;
+		if (ps === undefined || vs === undefined) {
+			SDK.debug.log('"params" and "vals" must exist: ' + s);
+			return null;
+		}
+
+		if (!Array.isArray(ps) || !Array.isArray(vs) || ps.length != vs.length) {
+			SDK.debug.log('ps and vs should be both array and have the same length: ' + s);
+			return null;
+		}
+
+		// get the real value (ignore "idx")
+		for (var i = 0; i < vs.length; ++ i) {
+			var v = vs[i][0];
+			if (v.val === undefined) {
+				SDK.debug.log('vs[' + i + '][0] doesn\'t have "val": ' + JSON.stringify(v));
+				return null;
+			}
+			vs[i] = v.val;
+		}
+
+		var result = {
+			'changed': {}
+		};
+		var changedCount = 0;
+		for (var i = 0; i < ps.length; ++ i) {
+			var p = ps[i];
+			var v = vs[i];
+			if (values[p] !== v) {
+				++ changedCount;
+				var c = {
+					'oldValue': values[p],
+					'value': v
+				};
+				result.changed[p] = c;
+				values[p] = v;
+			}
+		}
+		if (changedCount > 0) {
+			result['status'] = JSON.parse(JSON.stringify(values));
+			SDK.em.fire('evtDeviceStatusChanged', result);
+		}
+		return data;
+	}
+
+	
+	var SDK = null;
+	var deviceInfo = {};
+	var values = {};
+
+	/**
+	 * Interfaces
+	 */
+	function init(sdk) {
+		SDK = sdk;
+
+		document.addEventListener('DOMContentLoaded', onDocumentReady, false);
+	}
+
+	function setDeviceStatus(deviceID, subDeviceID, cmd) {
+		return new Promise(function(resolve, reject) {
+			function onSucceed(data) {
+				var response = JSON.parse(data);
+				if (response.status !== 0) {
+					reject(STRINGS.error.cmd + '(' + response.status + ')');
+				} else {
+					resolve(parseDeviceStatus(response));
+				}
+			}
+
+			function onFailed(e) {
+				reject(e);
+			}
+
+			var command = [deviceID, subDeviceID, cmd, 'dev_ctrl']; // TODO
+			cordova.exec(onSucceed, onFailed, BRIDGE, 'devicecontrol', command);
+		});
+	}
+
+	function getDeviceStatus(deviceID, subDeviceID, status) {
+		return new Promise(function(resolve, reject) {
+			function onSucceed(data) {
+				var response = JSON.parse(data);
+				if (response.status !== 0) {
+					reject(STRINGS.error.cmd + '(' + response.status + ')');
+				} else {
+					resolve(parseDeviceStatus(response));
+				}
+			}
+
+			function onFailed(e) {
+				reject(e);
+			}
+
+			var cmd;
+			if (status.length > 0) {
+				cmd = SDK.newCommand(deviceID, SDK.profile.srvs[0], 'get', status, []);
+			} else {
+				cmd = SDK.newCommand(deviceID, SDK.profile.srvs[0], 'get', SDK.getAllParams(), []);
+			}
+			var command = [deviceID, subDeviceID, cmd, 'dev_ctrl'];
+			cordova.exec(onSucceed, onFailed, BRIDGE, 'devicecontrol', command);
+		});
+	}
+
+	function registerNotification() {
+		function onSucceed(data) { // TODO
+			registerNotification();
+
+			data = JSON.parse(data);
+		}
+
+		function onFailed(e) {
+			registerNotification();
+		}
+
+		cordova.exec(onSucceed, onFailed, BRIDGE, 'notification', []);
+	}
+
+	return {
+		'init': init,
+		'setDeviceStatus': setDeviceStatus,
+		'getDeviceStatus': getDeviceStatus
+	};
+})();
+
+/**
+ * define the common JS sdk
+ */
+var JSDK = (function() {
+	"use strict";
+	/** make setTimeout() a promise, usage:
+	 *	later(1000, 'any data').then(function(data) {
+	 *		// do anything
+	 *		return later(2000, data); // if you want to chain
+	 *	}).then(function(data) {
+	 *		// do anything...
+	 *	});
+	 */
+	function later(delay, data) {
+		return new Promise(function(resolve, reject) {
+			if (delay === undefined) {
+				delay = 0;
+			}
+			window.setTimeout(function() {
+				resolve(data);
+			}, delay);
+		});
+	}
+
+	var debug = (function() {
+		var list = null;
+		function log(str, prtTrace) {
+			try {
+				if (log.caller != null) {
+					str = log.caller.name + ': ' + str;
+				}
+			} catch(e) {}
+	
+			if (list == null) {
+				list = document.getElementById('debug');
+				if (list == null) {
+					list = document.createElement('ul');
+					list.id = 'debug';
+					document.getElementsByTagName('body')[0].appendChild(list);
+				}
+			}
+			var li = document.createElement('li');
+			li.innerHTML = str;
+			later().then(function() {
+				list.insertBefore(li, list.firstChild);
+			});
+			if (prtTrace) {
+				trace();
+			}
+		}
+
+		function trace() {
+			try {
+				window['3.1415926535'].x = 2.7182818284;
+			} catch (e) {
+				if (e.stack) {
+					log('call stack: ' + e.stack);
+				}
+			}
+		}
+
+		return {
+			log:          log,
+			trace:        trace
+		}
+	})();
+
+	// event manager
+	var em = (function() {
+		var CHECKDUP = false; // TODO: use ref counter instead
+		var map = {};
+		function checkParams(events, subscriber) {
+			var evts = null;
+			if (typeof subscriber === 'function') {
+				if ('string' === typeof events) {
+					evts = [events];
+				} else if (Array.isArray(events)){
+					evts = events;
+				}
+			}
+			return evts;
+		}
+
+		function subscribe(events, subscriber) {
+			var evts = checkParams(events, subscriber);
+			if (evts === null) {
+				return this;
+			}
+
+			for (var i = 0; i < evts.length; ++ i) {
+				var k = evts[i];
+				if (map[k] === undefined) {
+					map[k] = [];
+				}
+				if (!Array.isArray(map[k])) {
+					// TODO: add log here
+					map[k] = [];
+				}
+				if (!CHECKDUP || map[k].indexOf(subscriber) === -1) {
+					map[k].push(subscriber);
+				}
+			}
+			return this;
+		}
+
+		function unsubscribe(events, subscriber) {
+			var evts = checkParams(events, subscriber);
+			if (evts === null) {
+				return this;
+			}
+
+			for (var i = 0; i < evts.length; ++ i) {
+				var k = evts[i];
+				var m = map[k];
+				if (m === undefined) {
+					continue;
+				}
+				if (!Array.isArray(m)) {
+					// TODO: log this error
+					map[k] = undefined;
+					continue;
+				}
+				if (CHECKDUP) {
+					// TODO: use ref counter here
+				}
+				var idx = m.indexOf(subscriber);
+				if (idx === -1) { // not found
+					continue;
+				}
+
+				map[k] = m.slice(0, idx).concat(m.slice(idx + 1, m.length));
+				if (map[k].length === 0) {
+					map[k] = undefined;
+				}
+			}
+			return this;
+		}
+
+		function fire(evt, param) {
+			if (typeof evt !== 'string') {
+				return false;
+			}
+
+			var m = map[evt];
+			if (m === undefined || !Array.isArray(m)) {
+				return false;
+			}
+
+			for (var i = 0; i < m.length; ++ i) {
+				if (typeof m[i] === 'function') {
+					m[i](evt, param);
+				}
+			}
+			return true;
+		}
+
+		function shutdown() {
+			map = {};
+		}
+
+		return {
+			subscribe:   subscribe,
+			unsubscribe: unsubscribe,
+			fire:        fire,
+			shutdown:    shutdown
+		};
+	})();
+
+	// error handle
+	var errcode = {
+		ERR_OK:                 0,
+		ERR_ERROR:              1, // general error
+		ERR_INIT_FAILED:        2,
+		ERR_JSON:               3,
+		ERR_BRIDGE:             10,
+		ERR_NETWORK_TIMEOUT:    1000,
+		ERR_INVALID_PARAM:      2000,
+	};
+
+	// For promise
+	try {
+		if (window && window.Promise === undefined) {
+			window.Promise = Q.promise;
+		}
+	} catch (e) {
+		try {
+			require(['Q'], function(Q) {
+				window.Promise = Q.promise;
+			});
+		} catch (e) {
+		}
+	}
+
+	// Create a promise for function func(callback) or func(onSucceed, onFailed);
+	function newPromise(fn) {
+		return new Promise(function(resolve, reject) {
+			fn(function(data) {
+				resolve(data);
+			}, function(e) {
+				reject(e);
+			});
+		});
+	}
+
+	function waitForDeviceID(evt, data) {
+		if (data.changed && data.changed['deviceID']) {
+			readonly.deviceID = data.changed.deviceID.value;
+
+			window.setTimeout(function() {
+				em.unsubscribe('evtDeviceInfoChanged', waitForDeviceID);
+
+				fireReady();
+			}, 0);
+		}
+
+	}
+
+	function fireReady() {
+		ready = true;
+		em.subscribe('evtDeviceInfoChanged', onDeviceInfoChanged);
+		em.fire('evtReady', {});
+		if (readyCallback) {
+			readyCallback();
+			readyCallback = undefined;
+		}
+	}
+
+	function onKickoff(evt, data) {
+		em.unsubscribe('evtKickoff', onKickoff);
+
+		if (readonly.deviceID === undefined) {
+			em.subscribe('evtDeviceInfoChanged', waitForDeviceID);
+		} else {
+			fireReady();
+		}
+	}
+
+	function onDeviceInfoChanged(evt, data) {
+		if (data.changed && data.changed['deviceID']) {
+			readonly.deviceID = data.changed.deviceID.value;
+		}
+	}
+
+	function checkProfile() {
+		if (!window.PROFILE) {
+			alert("Profile doesn't exist");
+			return false;
+		}
+
+		if (PROFILE.srvs === undefined || !Array.isArray(PROFILE.srvs) || PROFILE.srvs.length == 0) {
+			alert("profile.srvs is invalid");
+			return false;
+		}
+
+		return true;
+	}
+
+	// Device related
+	var ready = false;
+	var READY_TIMEOUT = 5000;
+	function isReady() {
+		return ready;
+	}
+	if (!checkProfile()) {
+		return null;
+	}
+	var readonly = {
+		profile: PROFILE,
+		deviceID: undefined
+	};
+	function init() {
+		ADPT.init(this);
+
+		em.subscribe('evtKickoff', onKickoff);
+		window.setTimeout(function() {
+			if (!isReady()) {
+				em.fire('evtSDKFailed', {});
+			}
+		}, READY_TIMEOUT);
+	}
+
+	function setDeviceStatus(deviceID, subDeviceID, cmd) {
+		if (!isReady()) {
+			debug.log('not ready');
+			return null;
+		}
+
+		if (!cmdFactory.checkCmd(cmd)) {
+			debug.log('cmd is invalid: ' + JSON.stringify(cmd));
+			return null;
+		}
+
+		if (cmd.params.length === 0) {
+			debug.log('nothing to control');
+			return null; // nothing to control
+		}
+
+		return ADPT.setDeviceStatus(deviceID, subDeviceID, cmd);
+	}
+
+	function getDeviceStatus(deviceID, subDeviceID, status) {
+		if (!isReady()) {
+			return null;
+		}
+
+		if (status !== undefined && !Array.isArray(status)) {
+			debug.log('status should be an array');
+			return null;
+		}
+
+		return ADPT.getDeviceStatus(deviceID, subDeviceID, status === undefined ? [] : status);
+	}
+
+	function getIntf(k) {
+		return PROFILE.suids[0].intfs[k];
+	}
+
+	function getAllParams() {
+		return Object.keys(PROFILE.suids[0].intfs);
+	}
+
+	var cmdFactory = (function() {
+		function checkCommand(cmd) {
+			if (cmd == null) {
+				return false;
+			}
+			var props = ['did', 'srv', 'act', 'params', 'vals'];
+			for (var i = 0; i < props.length; ++ i) {
+				if (!cmd.hasOwnProperty(props[i])) {
+					return false;
+				}
+			}
+	
+			if (['get', 'set'].indexOf(cmd.act) === -1) {
+				return false;
+			}
+	
+			if (!Array.isArray(cmd.params) || !Array.isArray(cmd.vals)) {
+				return false;
+			}
+			if (cmd.act !== 'get') {
+				if (cmd.params.length != cmd.vals.length) {
+					return false;
+				}
+			} else {
+				if (cmd.vals.length != 0) {
+					return false;
+				}
+			}
+	
+			return true;
+		}
+
+		function getValueString(value) {
+			return '[{"val":' + JSON.stringify(value) + ',"idx":1}]';
+		}
+	
+		// @return null if failed (invalid action)
+		function newCommand(deviceID, srv, action, params, values) {
+			if (action !== 'get' && action !== 'set') {
+				debug.log('action must be "get" or "set"');
+				return null;
+			}
+			var isget = action === 'get';
+
+			if ((params == null) != (values == null)) {
+				debug.log('params and values must both be null or not');
+				return null;
+			}
+
+			if (params && !Array.isArray(params)) {
+				debug.log('params must be an array');
+				return null;
+			}
+
+			if (values && !Array.isArray(values)) {
+				debug.log('values must be an array');
+				return null;
+			}
+
+			if (params != null && values != null && (params.length != values.length)) {
+				if (!isget) {
+					debug.log('params and values must have the same items if not "get".');
+					return null;
+				}
+			}
+	
+			var cmd = {
+				did: deviceID,
+				srv: srv,
+				act: action,
+				params: [],
+				vals: []
+			};
+			
+			if (params != null) {
+				for (var i = 0; i < params.length; ++ i) {
+					cmd.params.push(params[i]);
+					if (!isget) {
+						cmd.vals.push(JSON.parse(getValueString(values[i])));
+					}
+				}
+			}
+
+			return cmd;
+		}
+	
+		function addParam(cmd, param, value) {
+			if (!checkCommand(cmd)) {
+				return false;
+			}
+	
+			var p = param;
+			var v = getvstring(value);
+	
+			var idx = -1;
+			for (var i = 0; i < cmd.params.length; ++ i) {
+				if (cmd.params[i] === p) {
+					cmd.vals[i] = v;
+					return true;
+				}
+			}
+	
+			cmd.params.push(p);
+			cmd.vals.push(v);
+			return true;
+		}
+
+		return {
+			checkCmd: checkCommand,
+			newCommand: newCommand,
+			addParam: addParam
+		}
+	})();
+
+	var readyCallback = null;
+	function setReadyCallback(fn) {
+		if (readyCallback === null) {
+			if (isReady()) {
+				fn();
+			} else {
+				readyCallback = fn;
+			}
+		}
+	}
+
+	var sdk = {
+		// error code
+		errcode:            errcode,
+		
+		// methods
+		'init':             init,
+
+		// device
+		'isReady':          isReady,
+		'ready':            setReadyCallback,
+		'newCommand':       cmdFactory.newCommand,
+		'addParam':         cmdFactory.addParam,
+		'setDeviceStatus':  setDeviceStatus,
+		'getDeviceStatus':  getDeviceStatus,
+		'getIntf':          getIntf,
+		'getAllParams':     getAllParams,
+
+		// event 
+		em:                 em,
+
+		// promise
+		'newPromise':       newPromise,
+
+		// debug
+		'debug':            debug,
+
+		// utils
+		'utils':            {
+			later:      later
+		}
+	};
+
+	// readonly properties
+	['profile', 'deviceID'].forEach(function(name) {
+		Object.defineProperty(sdk, name, {
+			get: function() {
+				return readonly[name];
+			}
+		});
+	});
+
+	return sdk;
+})();
+
+JSDK.init();
+
+var UIKIT = (function() {
+	var GRID = {
+		X: 5,
+		Y: 8,
+		size: 0,
+		gap: {x: 0, y: 0}
+	};
+	var IDS = {
+		content: 'kit-content',
+		popup: 'kit-popup-layer',
+		wait: 'kit-popup-wait',
+		wait_ring: 'kit-popup-wait-ring',
+		msgbox: 'kit-popup-msgbox',
+		msgbox_text: 'kit-popup-msgbox-text',
+		errbox: 'kit-popup-errbox',
+		errbox_text: 'kit-popup-errbox-text'
+	};
+
+	function $(id) { // we don't use jquery :)
+		return document.getElementById(id);
+	}
+
+	function gridGetX(x) {
+		var ix = Math.floor(x);
+		var fx = x - ix;
+		return ix * (GRID.size + GRID.gap.x) + fx * GRID.size;
+	}
+
+	function gridGetY(y) {
+		var iy = Math.floor(y);
+		var fy = y - iy;
+		return iy * (GRID.size + GRID.gap.y) + fy * GRID.size;
+	}
+
+	function testGrid() {
+		window.addEventListener('resize', function() {
+			document.title = window.innerWidth + 'x' + window.innerHeight;
+		}, false);
+
+		var body = document.getElementsByTagName('body')[0];
+		for (var y = 0; y < GRID.Y; ++ y) {
+			for (var x = 0; x < GRID.X; ++ x) {
+				var cell = document.createElement('div');
+				cell.className = 'kit-grid-cell';
+				cell.grid = {x:x, y:y};
+				cell.style.width = GRID.size + 'px';
+				cell.style.height = GRID.size + 'px';
+				var px = gridGetX(x);
+				var py = gridGetY(y);
+				cell.style.transform = 'translate(' + px + 'px, ' + py + 'px)';
+				cell.style.webkitTransform = cell.style.transform;
+
+				body.appendChild(cell);
+			}
+		}
+	}
+
+	function createContainers() {
+		var body = document.getElementsByTagName('body')[0];
+		if (body == null) {
+			return false;
+		}
+
+		var data = {
+			'kit-content': '',
+			'kit-popup-layer': 'hidden'
+		};
+		for (var id in data) {
+			var elem = document.createElement('div');
+			elem.id = id;
+			elem.className = data[id];
+
+			// Android prior v4.4 doens't support 'vw' and 'vh', so we specify them here
+			elem.style.width = window.innerWidth + 'px';
+			body.appendChild(elem);
+		};
+		$('kit-popup-layer').style.height = window.innerHeight + 'px';
+
+		return true;
+	}
+
+	function onLoad() {
+		document.removeEventListener('DOMContentLoaded', onLoad, false);
+
+		GRID.size = parseInt(window.innerWidth / GRID.X);
+		GRID.gap.y = parseInt((window.innerHeight - (GRID.size * GRID.Y)) / (GRID.Y - 1));
+		if (GRID.gap.y < 0) {
+			GRID.gap.y = 0;
+			GRID.size = parseInt(window.innerHeight / GRID.Y);
+			GRID.gap.x = parseInt((window.innerWidth - GRID.size * GRID.X) / (GRID.X - 1));
+		}
+
+//		testGrid();
+		if (!createContainers()) {
+			alert('Create container failed.');
+			return;
+		}
+
+		['touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove'].forEach(function(evt) {
+			document.addEventListener(evt, onTouch, false);
+		});
+		JSDK.em.subscribe(['evtDeviceStatusChanged'], onDeviceStatusChanged);
+	}
+
+	function onTouch(evt) {
+//		evt.preventDefault();
+	}
+
+	function onDeviceStatusChanged(evt, data) {
+		var changed = data.changed;
+		if (changed === undefined) {
+			return;
+		}
+	}
+
+	var popup = (function() {
+		var popupCount = 0;
+		function addref() {
+			++ popupCount;
+			if (popupCount === 1) {
+				$(IDS.popup).classList.remove('hidden');
+			}
+		}
+		function release() {
+			-- popupCount;
+			if (popupCount === 0) {
+				$(IDS.popup).classList.add('hidden');
+			}
+		}
+		var waiting = (function() {
+			var count = 0;
+			function show() {
+				var popup = $(IDS.popup);
+				if (popup == null) {
+					return false;
+				}
+				var wait = $(IDS.wait);
+				if (wait == null) {
+					wait = createElementFromTemplate({
+						tag: 'div', id: IDS.wait, children: [{
+							tag: 'div', id: IDS.wait_ring
+						}]
+					});
+
+					var width = Math.floor(GRID.size * 1.5 + 0.5);
+					var height = Math.floor(GRID.size * 1.5 + 0.5);
+					center(wait, width, height);
+					popup.appendChild(wait);
+				}
+				++ count;
+				addref();
+			}
+
+			function close() {
+				if (count == 0 || popupCount == 0) {
+					JSDK.debug.log('count and popupCount is error: ' + count + ' and ' + popupCount);
+				}
+				release();
+				-- count;
+				if (count === 0) {
+					var wait = $(IDS.wait);
+					if (wait != null) {
+						wait.parentNode.removeChild(wait);
+					}
+				}
+			}
+
+			return {
+				show: show,
+				close: close
+			};
+		})();
+
+		var msgbox = (function() {
+			var timer = null;
+			function show(msg, timeout) {
+				var popup = $(IDS.popup);
+				if (popup == null) {
+					return false;
+				}
+				if (timeout === undefined) {
+					timeout = 3000;
+				}
+				var mb = $(IDS.msgbox);
+				if (mb == null) {
+					mb = createElementFromTemplate({
+						tag: 'div', id: IDS.msgbox, style: { visibility: 'hidden' }, children: [{
+							tag: 'div', id: IDS.msgbox_text, innerHTML: msg
+						}]
+					});
+
+					popup.appendChild(mb);
+				}
+				JSDK.utils.later(0).then(function() {
+					center(mb);
+					mb.style.visibility = '';
+				});
+
+				if (timer != null) {
+					window.clearTimeout(timer);
+					timer = null;
+				} else {
+					addref();
+				}
+				timer = window.setTimeout(function() {
+					var mb = $(IDS.msgbox);
+					mb.parentNode.removeChild(mb);
+					release();
+					timer = null;
+				}, timeout);
+				return true;
+			}
+
+			return {
+				show: show
+			};
+		})();
+
+		var menu = (function() {
+			var _m = null;
+			function popup(m) {
+				if (_m !== null) {
+					JSDK.debug.log('There should be only on popup menu at the same time');
+					return false;
+				}
+				_m = m;
+				var layer = $(IDS.popup);
+				layer.classList.add('menubg');
+				m.style.position = 'absolute';
+				m.style.transform = 'translate(0, ' + window.innerHeight + 'px)';
+				m.style.webkitTransform = 'translate(0, ' + window.innerHeight + 'px)';
+				layer.appendChild(m);
+				addref();
+				JSDK.utils.later(0).then(function() {
+					var y = window.innerHeight - m.scrollHeight;
+					m.style.transform = 'translate(0, ' + y + 'px)';
+					m.style.webkitTransform = 'translate(0, ' + y + 'px)';
+				});
+				layer.onclick = function() {
+					close();	
+				}
+
+				return true;
+			}
+
+			function close() {
+				var layer = $(IDS.popup);
+				layer.onclick = null;
+				layer.classList.remove('menubg');
+				layer.removeChild(_m);
+				_m = null;
+				release();
+			}
+			return {
+				popup: popup,
+				close: close
+			};
+		})();
+
+		var error = (function() {
+			var currid = 1;
+			var map = {};
+			function show(msg) {
+				var popup = $(IDS.popup);
+				if (popup == null) {
+					return false;
+				}
+				popup.classList.add('errorbg');
+				var mb = $(IDS.errbox);
+				if (mb == null) {
+					mb = createElementFromTemplate({
+						tag: 'div', id: IDS.errbox, style: { visibility: 'hidden' }, children: [{
+							tag: 'div', id: IDS.errbox_text, innerHTML: msg
+						}]
+					});
+
+					popup.appendChild(mb);
+				} else {
+					$(IDS.errbox_text).innerHTML = msg;
+				}
+				map[currid] = msg;
+				JSDK.utils.later(0).then(function() {
+					center(mb);
+					mb.style.visibility = '';
+				});
+
+				addref();
+				return currid ++;
+			}
+
+			function close(id) {
+				if (map[id] === undefined) {
+					JSDK.debug.log('id: ' + id + ' does not exist');
+					return false;
+				}
+				if (popupCount == 0) {
+					JSDK.debug.log('popupCount is 0');
+				}
+				release();
+				var popup = $(IDS.popup);
+				var keys = Object.keys(map);
+				if (keys.length === 1) {
+					popup.classList.remove('errorbg');
+					var box = $(IDS.errbox);
+					if (box != null) {
+						box.parentNode.removeChild(box);
+					}
+				} else {
+					delete map[id];
+					keys = Object.keys(map);
+					keys.sort(function(a, b) { return b - a; }); // Largest first
+					msg = map[keys[0]];
+
+					$(IDS.errbox_text).innerHTML = msg;
+					JSDK.utils.later(0).then(function() {
+						center($(IDS.errbox));
+					});
+				}
+				return true;
+			}
+			return {
+				show: show,
+				close: close
+			};
+		})();
+
+		/*
+		 * var el = document.getElementById('el-id');
+		 * 1. just center the el use its origin size:
+		 *    center(el);
+		 * 2. center the el with size (in px):
+		 *    center(el, 100, 100);
+		 */
+		function center(elem, width, height) {
+			var style = elem.style;
+			if (width === undefined || height === undefined) {
+				width = elem.scrollWidth;
+				height = elem.scrollHeight;
+			} else {
+				style.width = width + 'px';
+				style.height = height + 'px';
+			}
+			style.left = Math.floor((window.innerWidth - width) / 2 + 0.5) + 'px';
+			style.top = Math.floor((window.innerHeight - height) / 2 + 0.5) + 'px';
+		}
+
+		return {
+			waiting: waiting,
+			msgbox: msgbox,
+			error: error,
+			menu: menu
+		}
+	})();
+
+	// controls
+	var controls = (function() {
+		/**
+		 * @param parentNode, could be null, use #kit-content instead
+		 * @param pos, the position of the control. { sx: 3, sy: 2, ex: 3.99, ey: 2.99 }
+		 * @param deviceID, deviceID
+		 * @param srv, the default srv
+		 * @param key, the key in params, and use it as the id ('kit-' + key)
+		 * @param onoff, optional, used to specify the value for on and off, default is [1, 0]
+		 */
+		function createOnOffButton(parentNode, pos, deviceID, srv, key, onoff) {
+			if (onoff === undefined) {
+				onoff = [1, 0];
+			} else {
+				if (!Array.isArray(onoff) && onoff.length != 2) {
+					JSDK.debug.log('onoff should be [1, 0]');
+					return null;
+				}
+			}
+			var container = parentNode;
+			if (container == null) {
+				container = document.getElementById(IDS.content);
+			}
+			if (!container) {
+				return null;
+			}
+			var id = 'kit-' + key;
+			if (document.getElementById(id) != null) {
+				JSDK.debug.log(id + ' exists!');
+				return null;
+			}
+
+			var wrapper = createElementFromTemplate({
+				tag: 'div', cls: 'kit-ctrl-container', children: [{
+					tag: 'div', cls: 'kit-onoff', id: id, children: [{
+						tag: 'div', cls: 'kit-onoff-thumb'
+					}]
+				}]
+			});
+
+			placeElement(wrapper, pos);
+			container.appendChild(wrapper);
+
+			$(id).onclick = function() {
+				var val = this.classList.contains('kit-on') ? onoff[1] : onoff[0];
+				var cmd = JSDK.newCommand(deviceID, srv, 'set', [key], [val]);
+				var p = JSDK.setDeviceStatus(JSDK.deviceID, null, cmd);
+				if (p) {
+					p.then(function() {
+						popup.waiting.close();
+					}).catch(function(msg){
+						popup.waiting.close();
+						popup.msgbox.show(msg);
+					});;
+				}
+				popup.waiting.show();
+			}
+			JSDK.em.subscribe(['evtDeviceStatusChanged'], function(evt, param) {
+				if (param.changed) {
+					var c = param.changed[key];
+					if (c) {
+						var button = $(id);
+						if (c.value == onoff[0]) {
+							button.classList.add('kit-on');
+						} else if (c.value == onoff[1]) {
+							button.classList.remove('kit-on');
+						}
+					}
+				}
+			});
+
+			return wrapper;
+		}
+
+		function createPlainView(parentNode, pos, deviceID, srv, key, type, strings) {
+			var container = parentNode ? parentNode : document.getElementById(IDS.content);
+			if (container == null) {
+				return null;
+			}
+			var id = 'kit-' + key;
+			if (document.getElementById(id) != null) {
+				JSDK.debug.log(id + ' exists!');
+				return null;
+			}
+
+			var wrapper = createElementFromTemplate({
+				tag: 'div', cls: 'kit-ctrl-container', children: [{
+					tag: 'div', cls: 'kit-plain-view', id: id, children: [{
+						tag: 'div', cls: 'kit-plain-keyname', innerHTML: strings.name
+					}, {
+						tag: 'div', cls: 'kit-plain-value'
+					}]
+				}]
+			});
+
+			container.appendChild(wrapper);
+			placeElement(wrapper, pos);
+
+			JSDK.em.subscribe(['evtDeviceStatusChanged'], function(evt, param) {
+				if (param.changed) {
+					var c = param.changed[key];
+					if (c) {
+						var value = wrapper.getElementsByClassName('kit-plain-value')[0];
+						$(id).rawValue = c.value;
+						if (type == 1) {
+							value.innerHTML = strings.values[c.value];
+						} else if (type == 2) {
+							if(strings.unit)
+								value.innerHTML = c.value + strings.unit;
+							else
+								value.innerHTML = c.value;
+						} else {
+							value.innerHTML = c.value;
+						}
+					}
+				}
+			});
+
+			return wrapper;
+		}
+
+		function createEnum(parentNode, pos, deviceID, srv, key, values, strings) {
+			if (values[0] !== 1) {
+				return null;
+			}
+			var wrapper = createPlainView(parentNode, pos, deviceID, srv, key, 1, strings);
+			var id = 'kit-' + key;
+			var valueElem = $(id).getElementsByClassName('kit-plain-value')[0];
+			valueElem.classList.add('kit-clickable');
+			valueElem.onclick = function() {
+				var popup = $(IDS.popup);
+
+				function onClickLi() {
+					UIKIT.popup.menu.close();
+					if ($(id).rawValue === this.rawValue) {
+						return;
+					}
+
+					var cmd = JSDK.newCommand(deviceID, srv, 'set', [key], [this.rawValue]);
+					var p = JSDK.setDeviceStatus(JSDK.deviceID, null, cmd);
+					if (p) {
+						p.then(function() {
+							UIKIT.popup.waiting.close();
+						}).catch(function(msg){
+							UIKIT.popup.waiting.close();
+							UIKIT.popup.msgbox.show(msg);
+						});;
+					}
+					UIKIT.popup.waiting.show();
+				}
+
+				var tpl = { tag: 'ul', cls: 'kit-popup-menu', children: [] };
+				var currValue = $(id).rawValue;
+				for (var i = 1; i < values.length; ++ i) {
+					var text = strings.values[values[i]];
+					tpl.children.push({
+						tag: 'li', innerHTML: text,
+						cls: values[i] === currValue ? 'curr' : undefined,
+						rawValue: values[i], onclick: onClickLi
+					});
+				}
+				var menu = createElementFromTemplate(tpl);
+				UIKIT.popup.menu.popup(menu);
+			}
+
+			return wrapper;
+		}
+
+		function createRange(parentNode, pos, deviceID, srv, key, values, strings) {
+			if (values[0] != 2 || values.length != 5) {
+				return null;
+			}
+			var min = values[1];
+			var max = values[2];
+			var step = values[3];
+			var scale = values[4];
+
+			var wrapper = createPlainView(parentNode, pos, deviceID, srv, key, 2, strings);
+			var id = 'kit-' + key;
+			var valueElem = $(id).getElementsByClassName('kit-plain-value')[0];
+			valueElem.classList.add('kit-clickable');
+			valueElem.onclick = function() {
+				var touchevents = ['touchstart', 'touchend', 'touchcancel', 'touchleave', 'touchmove'];
+				var popup = $(IDS.popup);
+				var panel = createElementFromTemplate({
+					tag: 'div', cls: 'kit-slider-panel', children: [{
+						tag: 'div', cls: 'kit-slider-value', innerHTML: getDisplayValue($(id).rawValue)
+					}, {
+						tag: 'div', cls: 'kit-slider-container', children: [{
+							tag: 'div', cls: 'kit-slider-bar'
+						}, {
+							tag: 'div', cls: 'kit-slider-thumb', draggable: "true"
+						}, {
+							tag: 'div', cls: 'kit-slider-start',innerHTML:getDisplayValue(values[1]) 
+						}, {
+							tag: 'div', cls: 'kit-slider-end',innerHTML:getDisplayValue(values[2])
+						}]
+					}]
+				});
+				UIKIT.popup.menu.popup(panel);
+				JSDK.utils.later(0).then(function() {
+					setThumbPos($(id).rawValue);
+				});
+
+				var sliderValue = panel.getElementsByClassName('kit-slider-value')[0];
+				var bar = panel.getElementsByClassName('kit-slider-bar')[0];
+				var thumb = panel.getElementsByClassName('kit-slider-thumb')[0];
+
+				function getDisplayValue(value) {
+					var temp = '';
+					if(strings.unit)
+						temp = value / scale + strings.unit;
+					else
+					 	temp = value / scale;
+					return temp;
+				}
+
+				function setThumbPos(value) {
+					var left = (bar.scrollWidth - thumb.scrollWidth) * (value - min) / (max - min);
+					left += bar.offsetLeft;
+					thumb.style.left = left + 'px';
+				}
+
+				function getValueFromX(x) {
+					var offset = x - bar.offsetLeft;
+					var len = bar.scrollWidth - thumb.scrollWidth;
+					var v = (max - min) * offset / len;
+					v = Math.floor(v / step + 0.5) * step;
+					v += min;
+					if (v < min) {
+						v = min;
+					}
+					if (v > max) {
+						v = max;
+					}
+					return v;
+				}
+
+				var inDragging = false;
+				var offsetX = 0;
+				touchevents.forEach(function(evt) {
+					thumb.addEventListener(evt, onTouch, false);
+				});
+				function onTouch(evt) {
+					var touches = evt.changedTouches;
+					var touch = touches[touches.length - 1];
+					var x = touch.pageX;
+					var y = touch.pageY;
+					var v = 0;
+					switch (evt.type) {
+					case 'touchstart':
+						if (inDragging) {
+							return;
+						}
+						inDragging = true;
+						offsetX = x - thumb.offsetLeft;
+						break;
+					case 'touchmove':
+						v = getValueFromX(x - offsetX);
+						sliderValue.innerHTML = getDisplayValue(v);
+						setThumbPos(v);
+						break;
+					case 'touchend':
+					case 'touchleave':
+						v = getValueFromX(x - offsetX); {
+							UIKIT.popup.menu.close();
+							if ($(id).rawValue === v) {
+								return;
+							}
+
+							var cmd = JSDK.newCommand(deviceID, srv, 'set', [key], [v]);
+							var p = JSDK.setDeviceStatus(JSDK.deviceID, null, cmd);
+							if (p) {
+								p.then(function() {
+									UIKIT.popup.waiting.close();
+								}).catch(function(msg){
+									UIKIT.popup.waiting.close();
+									UIKIT.popup.msgbox.show(msg);
+								});;
+							}
+							UIKIT.popup.waiting.show();
+						}
+						inDragging = false;
+						break;
+					case 'touchcancel':
+						inDragging = false;
+						break;
+					}
+
+					if (inDragging) {
+						evt.preventDefault();
+					}
+				}
+			}
+
+			return wrapper;
+		}
+
+
+		return {
+			createOnOffButton: createOnOffButton,
+			createEnum: createEnum,
+			createRange: createRange,
+			createPlainView: createPlainView
+		};
+	})();
+
+
+	/**
+	 * tpl: {
+	 *	tag: 'div',
+	 *	id: 'kit-xx',
+	 *	cls: 'kit-xx kit-yy',
+	 *	innerHTML: 'anything',
+	 *	style: {
+	 *		display: 'none',
+	 *		...
+	 *	},
+	 *	children: [ tpl, ...]
+	 * }
+	 */
+	function createElementFromTemplate(tpl) {
+		var elem = document.createElement(tpl.tag);
+		if (elem == null) {
+			return null;
+		}
+		for (var k in tpl) {
+			if (k === 'cls') {
+				elem.className = tpl[k];
+			} else if (k === 'style') {
+				for (var s in tpl.style) {
+					elem.style[s] = tpl.style[s];
+				}
+			} else if (k === 'children') {
+				if (!Array.isArray(tpl.children)) {
+					continue;
+				}
+				var children = tpl.children;
+				for (var i = 0; i < children.length; ++ i) {
+					var child = createElementFromTemplate(children[i]);
+					if (child) {
+						elem.appendChild(child);
+					}
+				}
+			} else if (k !== 'tag') {
+				elem[k] = tpl[k];
+			}
+		}
+		return elem;
+	}
+
+	function placeElement(elem, pos) {
+		var st = elem.style;
+
+		var sx = gridGetX(pos.sx);
+		var sy = gridGetY(pos.sy);
+		var width = gridGetX(pos.ex) - sx;
+		var height = gridGetY(pos.ey) - sy;
+		st.width = width + 'px';
+		st.height = height + 'px';
+		st.left = sx + 'px';
+		st.top = sy + 'px';
+	}
+
+	function leftElement(elem, pos) {
+		var st = elem.style;
+
+		var sx = gridGetX(pos.sx);
+		var sy = gridGetY(pos.sy);
+		var height = gridGetY(pos.ey) - sy;
+		st.left = sx + 'px';
+		st.top = sy + (height - elem.scrollHeight) / 2 + 'px';
+	}
+
+	document.addEventListener('DOMContentLoaded', onLoad, false);
+	return {
+		// popup layer
+		popup: popup,
+		// controls
+		controls: controls,
+
+		// utils
+		utils: {
+			createElementFromTemplate: createElementFromTemplate,
+			placeElement: placeElement,
+			leftElement: leftElement
+		}
+	}
+})();
+
+(function() {
+function $(id) { // we don't use jquery :)
+	return document.getElementById(id);
+}
+
+var panels = {
+	on: null,
+	off: null
+};
+var hasPwr = true;
+
+var sdkerrormsg = null;
+var deviceofflinemsg = null;
+function onDOMContentLoaded() {
+	document.removeEventListener('DOMContentLoaded', onDOMContentLoaded, false);
+	JSDK.em.subscribe('evtSDKFailed', function(evt, param) {
+		sdkerrormsg = UIKIT.popup.error.show(STRINGS.error.sdk);
+	});
+
+	// create on-panel and off-panel
+	['on', 'off'].forEach(function(key) {
+		panel = document.createElement('div');
+		panel.className = 'kit-content';
+		panel.id = key + 'panel';
+		panel.style.visibility = 'hidden';
+		$('kit-content').appendChild(panel);
+		panels[key] = panel;
+	});
+	
+	UIKIT.popup.waiting.show(); // wait for SDK ready
+	onSDKReady();
+}
+
+function onSDKReady() {
+	if (sdkerrormsg != null) {
+		UIKIT.popup.error.close(sdkerrormsg);
+		sdkerrormsg = null;
+	}
+	JSDK.em.subscribe('evtDeviceStatusChanged', onFirstDeviceStatusChanged);
+	JSDK.em.subscribe('evtDeviceInfoChanged', onDeviceInfoChanged);
+
+	var did = JSDK.deviceID;
+	var intfs = JSDK.profile.suids[0].intfs;
+	hasPwr = intfs['pwr'] === undefined ? false : true;
+	var srv = JSDK.profile.srvs[0];
+	var cnt = hasPwr ? 1 : 0;
+	for (var k in intfs) {
+		if (k === 'pwr') {
+			var p = UIKIT.utils.createElementFromTemplate({tag: 'p', cls: 'kit-ctrl-container'});
+			p.innerHTML = STRINGS.intfs[k].name;
+			panels.off.appendChild(p);
+
+			var pos = {sx:.1,sy:0.25,ex:3.2,ey:.65}
+			UIKIT.utils.leftElement(p, pos);
+
+			pos.sx = 3.7;
+			pos.ex = 4.7;
+			UIKIT.controls.createOnOffButton(panels.off, pos, did, srv, 'pwr');
+		} else {
+			var intf = intfs[k][0];
+
+			var y = cnt + 1;// / 2 + 0.5
+			if (intf.act == 1) {
+				var pos = {sx:.1,sy:y,ex:4.7,ey:y + .4};
+				UIKIT.controls.createPlainView(panels.on, pos, did, srv, k, intf.in[0], STRINGS.intfs[k]);
+			} else {
+				if (intf.in[0] == 1/* && intf.in.length > 3*/) {
+					var pos = {sx:.1,sy:y,ex:4.7,ey:y + .4};
+					UIKIT.controls.createEnum(panels.on, pos, did, srv, k, intf.in, STRINGS.intfs[k]);
+				} else if (intf.in[0] == 2) {
+					var pos = {sx:.1,sy:y,ex:4.7,ey:y + .4};
+					UIKIT.controls.createRange(panels.on, pos, did, srv, k, intf.in, STRINGS.intfs[k]);
+				} else {
+					var p = UIKIT.utils.createElementFromTemplate({tag: 'p', cls: 'kit-ctrl-container'});
+					p.innerHTML = STRINGS.intfs[k].name;
+					panels.on.appendChild(p);
+	
+					var pos = {sx:.1,sy:y,ex:3.2,ey:y + .4};
+					UIKIT.utils.leftElement(p, pos);
+	
+					if (intf.in[0] == 1 && intf.in.length == 3) {
+						pos.sx = 3.7;
+						pos.ex = 4.7;
+						UIKIT.controls.createOnOffButton(panels.on, pos, did, srv, k);
+					}
+				}
+			}
+			++ cnt;
+		}
+	}
+
+	panels.off.style.visibility = '';
+	if (!hasPwr) {
+		panels.on.style.visibility = '';
+	}	
+}
+document.addEventListener('DOMContentLoaded', onDOMContentLoaded, false);
+//JSDK.ready(onSDKReady);
+
+// utils
+function onDeviceInfoChanged(evt, data) {
+	var changed = data.changed;
+	for (var k in changed) {
+		if (k === 'deviceName') {
+			document.title = changed[k].value;
+		} else if (k === 'deviceStatus') {
+			if (changed[k].value === true) {
+				if (deviceofflinemsg != null) {
+					UIKIT.popup.error.close(deviceofflinemsg);
+					deviceofflinemsg = null;
+				}
+			} else {
+				if (deviceofflinemsg === null) {
+					deviceofflinemsg = UIKIT.popup.error.show(STRINGS.error.device_offline);
+				}
+			}
+		}
+	}
+}
+
+function onFirstDeviceStatusChanged(evt, data) {
+	UIKIT.popup.waiting.close();
+
+/*
+	panels.off.style.visibility = '';
+	if (!hasPwr) {
+		panels.on.style.visibility = '';
+	}
+*/
+
+	JSDK.em.unsubscribe('evtDeviceStatusChanged', onFirstDeviceStatusChanged);
+	JSDK.em.subscribe('evtDeviceStatusChanged', onDeviceStatusChanged);
+
+	onDeviceStatusChanged(evt, data);
+}
+
+function onDeviceStatusChanged(evt, data) {
+	var changed = data.changed;
+	if (changed['pwr']) {
+		if (changed['pwr'].value == 1) {
+			panels.on.style.visibility = '';
+		} else {
+			panels.on.style.visibility = 'hidden';
+		}
+	}
+}
+
+})();
+
+
+</script>
+<!-- endpack -->
+</body>
+</html>

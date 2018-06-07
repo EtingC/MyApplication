@@ -1,0 +1,3 @@
+<!-- build:js -->
+<script type="text/javascript" src="http://api.alink.aliyun.com/sdk/v2/sdk.js"></script>
+<!-- endbuild -->

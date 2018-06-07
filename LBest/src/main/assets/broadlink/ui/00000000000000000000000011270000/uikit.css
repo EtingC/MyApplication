@@ -1,0 +1,286 @@
+/** vim:ts=2:sts=2:sw=2:
+ * common class/id style here
+ */
+@charset "UTF-8";
+* {
+	border: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	user-select: none;
+
+	-webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+	position: relative;
+	height: 100%;
+	overflow-x: hidden;
+}
+
+html {
+	font-size: 12pt;
+}
+
+body {
+	background-color: white;
+}
+
+a, input, select, textarea {
+	outline:0;
+}
+
+.hidden {
+	display: none !important;
+}
+
+#kit-content,
+.kit-content {
+	width: 100vw !important;
+	background-color: white;
+}
+
+/********** popup **********/
+#kit-popup-layer {
+	position: fixed;
+	width: 100vw !important;
+	height: 100vh !important;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0);
+}
+#kit-popup-layer.menubg {
+	background-color: rgba(0,0,0,0.2);
+}
+#kit-popup-layer.errorbg {
+	background-color: rgba(0,0,0,0.4);
+}
+#kit-popup-layer.errorbg > div {
+	display: none;
+}
+
+#kit-popup-wait,
+#kit-popup-msgbox,
+#kit-popup-errbox {
+	position: fixed;
+	background-color: rgba(0,0,0,0.4);
+	color: white;
+}
+#kit-popup-wait {
+	border-radius: 20%;
+}
+#kit-popup-msgbox,
+#kit-popup-errbox {
+	font-size: 12pt;
+	border-radius: 8pt;
+}
+
+@-webkit-keyframes kit-wait-spin {
+	from { -webkit-transform: rotate(0deg); }
+	to { -webkit-transform: rotate(360deg); }
+}
+@keyframes kit-wait-spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+#kit-popup-wait-ring {
+	outline: 1pt solid transparent;
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	left: 25%;
+	top: 25%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 50%;
+	border: 2pt solid white;
+	background-color: transparent;
+	-webkit-animation: kit-wait-spin 1s linear infinite;
+	animation: kit-wait-spin 1s linear infinite;
+}
+#kit-popup-wait-ring:after {
+	content: " ";
+	position: absolute;
+	width: 20%;
+	height: 20%;
+	right: 40%;
+	top: 0;
+	border-radius: 50%;
+	background-color: white;
+}
+
+#kit-popup-msgbox-text,
+#kit-popup-errbox-text {
+	display: block;
+	max-width: 80vw;
+	padding: 8pt;
+	word-wrap: break-word;
+}
+#kit-popup-layer.errorbg > #kit-popup-errbox {
+	display: block;
+}
+
+/********** controls **********/
+.kit-ctrl-container {
+	position: absolute;
+	border: none;
+	background-color: transparent;
+}
+
+.kit-onoff {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 2px solid #ccc; /* use pt could leave a slight white gap between border and the thumb (iOS) */
+	background-color: white;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: border-color 0.2s linear;
+	transition: border-color 0.2s linear;
+	box-shadow: 1pt 1pt 2pt #aaa;
+}
+
+.kit-onoff > .kit-onoff-thumb {
+	width: 50%;
+	height: 100%;
+	box-sizing: border-box;
+	border: none;
+	position: absolute;
+	background-color: #ccc;
+	left: 0;
+	top: 0;
+	-webkit-transition: left 0.2s linear, background-color 0.2s linear;
+	transition: left 0.2s linear, background-color 0.2s linear;
+}
+
+.kit-onoff.kit-on {
+	border-color: #55ff55;
+}
+.kit-onoff.kit-on > .kit-onoff-thumb {
+	background-color: #55ff55;
+	left: 50%;
+}
+
+.kit-plain-view {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background-color: transparent;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.kit-plain-view > .kit-plain-keyname {
+	position: absolute;
+	width: 48%;
+	left: 0;
+}
+.kit-plain-view > .kit-plain-value {
+	position: absolute;
+	width: 48%;
+	right: 0;
+	text-align: right;
+}
+.kit-plain-view > .kit-plain-value.kit-clickable {
+	color: #88d;
+}
+
+.kit-popup-menu {
+	box-sizing: border-box;
+	position: absolute;
+	width: 100%;
+	width: 100vw;
+	border: 1px solid gray;
+	background-color: white;
+	-webkit-transition: -webkit-transform 0.2s linear;
+	transition: transform 0.2s linear;
+}
+.kit-popup-menu > li {
+	height: 3em;
+	line-height: 3em;
+	border-bottom: 1px solid gray;
+	text-align: center;
+	position: relative;
+}
+.kit-popup-menu > li.curr:before {
+	content:"";
+	margin:1.3em;
+	width: 0.4em;
+	height: 0.4em;
+	position: absolute;
+	border-radius: 50%;
+	right: .5em;
+	top: 0;
+	display: block;
+	background-color: black;
+}
+
+.kit-slider-panel {
+	box-sizing: border-box;
+	position: absolute;
+	width: 100%;
+	width: 100vw;
+	border: 1px solid gray;
+	background-color: white;
+	-webkit-transition: -webkit-transform 0.2s linear;
+	transition: transform 0.2s linear;
+}
+.kit-slider-value {
+	text-align: center;
+	padding: 0.5em 0;
+}
+.kit-slider-container {
+	padding: 16px 16px 0 16px;
+	margin-bottom: 4em;
+	position: relative;
+}
+.kit-slider-bar {
+	height: 0;
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #ccc;
+}
+.kit-slider-thumb {
+	position: absolute;
+	box-sizing: border-box;
+	width: 20px;
+	height: 40px;
+	border-color: #5c5;
+	background-color: #5f5;
+	border-radius: 2px;
+	top: -3px;
+}
+.kit-slider-start,
+.kit-slider-end {
+	font-size: 0.8em;
+	position: absolute;
+	bottom: -3.8em;
+}
+.kit-slider-start {
+	left: 8px;
+}
+.kit-slider-end {
+	right: 8px;
+}
+
+
+
+/** grid system **/
+.kit-grid-cell {
+	display: block;
+
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+
+	position: absolute;
+	background-color: #eeeeee;
+
+	z-index: -1;
+}
+.kit-grid-cell:nth-child(2n+1) {
+	background-color: white;
+}
+
+
+
