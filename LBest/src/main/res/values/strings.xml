@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">晾霸智能</string>
+    <string name="app_name">鸿雁智能X</string>
     <string name="login">账号已登录</string>
 
     <string name="haslogin">账号已登录</string>
@@ -100,7 +100,7 @@
 
 
     <string name="str_version">版本升级</string>
-    <string name="str_about">关于晾霸</string>
+    <string name="str_about">关于鸿雁</string>
     <string name="str_setting">账号设置</string>
     <string name="str_userdevicelist_title">BroadLink SDS</string>
     <string name="str_nickname">昵称</string>
@@ -262,16 +262,16 @@
     <string name="str_oldpassword">原密码</string>
     <string name="str_newpassword">新密码</string>
 
-    <string name="str_about_name">广东晾霸智能科技有限公司</string>
-    <string name="str_about_address">地址：中国·广东省广州市黄埔区经济技术开发区环岭路13号。</string>
-    <string name="str_about_state">广东晾霸智能科技有限公司\n中国·广东省广州市黄埔区经济技术开发区环岭路13号</string>
+    <string name="str_about_name">杭州鸿雁智能科技有限公司</string>
+    <string name="str_about_address">地址：浙江，杭州余杭区。</string>
+    <string name="str_about_state">杭州鸿雁智能科技有限公司\n中国·浙江，杭州余杭区</string>
     <string name="str_tel">客服电话</string>
     <string name="str_about_tel">400-8166-208</string>
     <string name="str_website">公司⽹网址</string>
-    <string name="str_about_website">www.l-best.com.cn</string>
+    <string name="str_about_website">www.Eting.info</string>
     <string name="str_erroridorpassword">账号或密码错误，请重新输⼊</string>
 
-    <string name="liangyiji">晾霸智能电动晾衣机</string>
+    <string name="liangyiji">鸿雁电器</string>
 
     <string name="str_password_code">输入短信验证码</string>
     <string name="str_password1">输入6-16位数字字符组合密码</string>

@@ -60,13 +60,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/shaders" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/assets" type="java-test-resource" />
@@ -74,6 +67,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/shaders" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/bundles" />
@@ -104,7 +104,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-safeguard" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/multi-dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/pre-dexed" />
@@ -114,53 +113,51 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/reports" />
-      <excludeFolder url="file://$MODULE_DIR$/build/test-results" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="com.android.support:multidex-1.0.1" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:support-fragment-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="com.taobao.android:mtopsdk_allinone_open:1.3.0@jar" level="project" />
-    <orderEntry type="library" exported="" name="__local_aars__:/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/LBest/libs/LogcatHelper.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:support-core-ui-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="__local_aars__:/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/LBest/libs/httpmime-4.1.2.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" exported="" name="__local_aars__:/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/LBest/libs/ormlite-android-4.48.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:cardview-v7-25.0.0" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="com.android.support:multidex-instrumentation-1.0.1" level="project" />
-    <orderEntry type="library" exported="" name="__local_aars__:/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/LBest/libs/gson-2.2.2.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" exported="" name="__local_aars__:/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/LBest/libs/ormlite-core-4.48.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.taobao.android:utdid4all:1.1.5.3_proguard@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.taobao.android:securityguardaar3-5.1.81" level="project" />
-    <orderEntry type="library" exported="" name="com.taobao.android:tnet-jni:3.1.2@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:support-media-compat-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:design-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="__local_aars__:/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/LBest/libs/cordova.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.taobao.android:tlog_adapter:1.0.4.4@jar" level="project" />
-    <orderEntry type="library" exported="" name="__local_aars__:/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/LBest/libs/libImageBlur.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:animated-vector-drawable-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="com.aliyun.alink.linksdk:devicecenter-1.1.0" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:support-v4-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:support-annotations:25.0.0@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:support-core-utils-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:appcompat-v7-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="javax.jmdns:jmdns:3.4.1@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:transition-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="__local_aars__:/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/LBest/libs/httplite-3.0.1.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.aliyun.alink:opensdk-0.1.3.2" level="project" />
-    <orderEntry type="library" exported="" name="com.taobao.wsf:wsf-client:1.3.1@jar" level="project" />
-    <orderEntry type="library" exported="" name="__local_aars__:/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/LBest/libs/libImageLoader.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.aliyun.alink:ut-0.0.1.2-include-app-monitor" level="project" />
-    <orderEntry type="library" exported="" name="com.aliyun.alink.linksdk:linksdk-0.2.2.6" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:support-compat-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="com.taobao.android:networksdk:2.0.5.2-open@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.aliyun.alink.linksdk:tools-0.2.1" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:recyclerview-v7-25.0.0" level="project" />
-    <orderEntry type="library" exported="" name="__local_aars__:/Users/Benson/Documents/Work/HonYar/鸿雁古北App/MyApplication/LBest/libs/libLet.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.alibaba:fastjson:1.1.45@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:support-vector-drawable-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:support-annotations:25.0.0@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_aars__:/Users/Benson/Documents/Work/HonYar/honyarGubeiApp/MyApplication/LBest/libs/ormlite-android-4.48.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_aars__:/Users/Benson/Documents/Work/HonYar/honyarGubeiApp/MyApplication/LBest/libs/libImageLoader.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.taobao.android:utdid4all:1.1.5.3_proguard@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.taobao.android:tnet-jni:3.1.2@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_aars__:/Users/Benson/Documents/Work/HonYar/honyarGubeiApp/MyApplication/LBest/libs/gson-2.2.2.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:support-fragment-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:support-media-compat-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.jmdns:jmdns:3.4.1@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:appcompat-v7-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.aliyun.alink.linksdk:devicecenter-1.1.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.aliyun.alink:opensdk-0.1.3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_aars__:/Users/Benson/Documents/Work/HonYar/honyarGubeiApp/MyApplication/LBest/libs/httpmime-4.1.2.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:animated-vector-drawable-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:support-compat-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:multidex-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:cardview-v7-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.aliyun.alink:ut-0.0.1.2-include-app-monitor" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:transition-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_aars__:/Users/Benson/Documents/Work/HonYar/honyarGubeiApp/MyApplication/LBest/libs/ormlite-core-4.48.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.taobao.wsf:wsf-client:1.3.1@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_aars__:/Users/Benson/Documents/Work/HonYar/honyarGubeiApp/MyApplication/LBest/libs/LogcatHelper.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.aliyun.alink.linksdk:tools-0.2.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_aars__:/Users/Benson/Documents/Work/HonYar/honyarGubeiApp/MyApplication/LBest/libs/libLet.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.taobao.android:networksdk:2.0.5.2-open@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.alibaba:fastjson:1.1.45@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:support-core-utils-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_aars__:/Users/Benson/Documents/Work/HonYar/honyarGubeiApp/MyApplication/LBest/libs/cordova.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.taobao.android:mtopsdk_allinone_open:1.3.0@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_aars__:/Users/Benson/Documents/Work/HonYar/honyarGubeiApp/MyApplication/LBest/libs/httplite-3.0.1.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:support-core-ui-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:support-vector-drawable-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:support-v4-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:recyclerview-v7-25.0.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: com.android.support:multidex-instrumentation-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.taobao.android:tlog_adapter:1.0.4.4@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.android.support:design-25.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.taobao.android:securityguardaar3-5.1.81" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: __local_aars__:/Users/Benson/Documents/Work/HonYar/honyarGubeiApp/MyApplication/LBest/libs/libImageBlur.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.aliyun.alink.linksdk:linksdk-0.2.2.6" level="project" />
     <orderEntry type="module" module-name="pulltorefreshlibrary" exported="" />
-    <orderEntry type="library" exported="" name="org.apache.http.legacy-android-23" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.http.legacy-android-23" level="project" />
   </component>
 </module>

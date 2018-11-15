@@ -186,7 +186,6 @@ public class LoginActivity extends AppCompatActivity {
             blProgressDialog.dismiss();
             if (aBoolean) {
 
-
                 BLUserInfo blUserInfo=BLAcountToAli.getInstance().getBlUserInfo();
                 BLLoginResult result = new BLLoginResult();
                 result.setLoginsession(blUserInfo.getBl_loginsession());

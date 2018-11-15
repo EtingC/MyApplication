@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-def time = new java.text.SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date())
+def time = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new Date())
 android {
     compileSdkVersion 23
     buildToolsVersion '25.0.3'
@@ -47,14 +47,16 @@ android {
 
             signingConfig signingConfigs.release
 
-            buildConfigField "String", "License", "\"FJfuJMvyNn3sw/jt0E089EjYJCx00DfL1cozOdZqpPagfnBUwCG5lTpfgMydwwdnxzQZWgAAAAB9NpydyrFSUtnVczXPZzCKuF/g+RbQkKz6vW+j8pKatCjPGNS8vbMTL2q2DnAOfM2zQ8KDv0v9YmR5MJmQrYwFBdfyRAv01RZMW2+sVsjOhQAAAAA=\""
+//            buildConfigField "String", "License", "\"FJfuJMvyNn3sw/jt0E089EjYJCx00DfL1cozOdZqpPagfnBUwCG5lTpfgMydwwdnxzQZWgAAAAB9NpydyrFSUtnVczXPZzCKuF/g+RbQkKz6vW+j8pKatCjPGNS8vbMTL2q2DnAOfM2zQ8KDv0v9YmR5MJmQrYwFBdfyRAv01RZMW2+sVsjOhQAAAAA=\""
+            buildConfigField "String", "License", "\"j/Q+pn9Z6gKfTPb9mEjqqGLMFuV2GnSsWlyjHSlgp7xDt/iQp5t6sAd+nR1dX4lKWNJMWQAAAABy2gTjMldR6P21wqsYFnr7qFW2xN5RQ+AOoLDC2AAl6L7zZXYzCUkY/BJEFsctdOM7OjNkvAbesoTfN0qwXesJGXM8IOhyUSnG6u3qHvnULAAAAAA=\""
             buildConfigField "String", "ChannelID", "\"1497ee24cbf2367decc3f8edd04d3cf4\""
             buildConfigField "int", "APP_VERSION", "1"
         }
         debug {
             signingConfig signingConfigs.debug
 
-            buildConfigField "String", "License", "\"FJfuJMvyNn3sw/jt0E089EjYJCx00DfL1cozOdZqpPagfnBUwCG5lTpfgMydwwdnxzQZWgAAAAB9NpydyrFSUtnVczXPZzCKuF/g+RbQkKz6vW+j8pKatCjPGNS8vbMTL2q2DnAOfM2zQ8KDv0v9YmR5MJmQrYwFBdfyRAv01RZMW2+sVsjOhQAAAAA=\""
+//            buildConfigField "String", "License", "\"FJfuJMvyNn3sw/jt0E089EjYJCx00DfL1cozOdZqpPagfnBUwCG5lTpfgMydwwdnxzQZWgAAAAB9NpydyrFSUtnVczXPZzCKuF/g+RbQkKz6vW+j8pKatCjPGNS8vbMTL2q2DnAOfM2zQ8KDv0v9YmR5MJmQrYwFBdfyRAv01RZMW2+sVsjOhQAAAAA=\""
+            buildConfigField "String", "License", "\"j/Q+pn9Z6gKfTPb9mEjqqGLMFuV2GnSsWlyjHSlgp7xDt/iQp5t6sAd+nR1dX4lKWNJMWQAAAABy2gTjMldR6P21wqsYFnr7qFW2xN5RQ+AOoLDC2AAl6L7zZXYzCUkY/BJEFsctdOM7OjNkvAbesoTfN0qwXesJGXM8IOhyUSnG6u3qHvnULAAAAAA=\""
             buildConfigField "String", "ChannelID", "\"1497ee24cbf2367decc3f8edd04d3cf4\""
             buildConfigField "int", "APP_VERSION", "1"
         }

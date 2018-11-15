@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.aliyun.alink:ut-0.0.1.2-include-app-monitor">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/LBest/build/intermediates/exploded-aar/com.aliyun.alink/ut/0.0.1.2-include-app-monitor/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/LBest/build/intermediates/exploded-aar/com.aliyun.alink/ut/0.0.1.2-include-app-monitor/res" />
+      <root url="jar://$PROJECT_DIR$/LBest/build/intermediates/exploded-aar/com.aliyun.alink/ut/0.0.1.2-include-app-monitor/jars/libs/app-monitor-sdk-2.6.0_for_bc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
